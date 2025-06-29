@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UpskillBro - Level up fast. No fluff. Just growth.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -54,16 +52,22 @@
                     Track growth.<br>
                     <span class="gradient-text">No fluff.</span>
                 </h1>
-                <p class="hero-subtitle">
-                    Master tech skills with gamified roadmaps, instant command tools, and AI-powered resume optimization.
-                </p>
+                <div class="rotating-taglines">
+                    <p class="tagline active">Learn the right skills, not everything.</p>
+                    <p class="tagline">Roadmaps. Tools. Growth — all in one place.</p>
+                    <p class="tagline">Tech prep that doesn't suck.</p>
+                    <p class="tagline">Study smart. Interview strong.</p>
+                    <p class="tagline">Track your progress like a game.</p>
+                    <p class="tagline">Focused learning, zero noise.</p>
+                    <p class="tagline">Built for learners, loved by doers.</p>
+                </div>
                 <div class="hero-ctas">
                     <button class="primary-btn" id="startLearning">
                         <span>Start Learning</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
                     <button class="secondary-btn" id="exploreTools">
-                        <span>Explore Tools</span>
+                        <span>Explore Paths</span>
                         <i class="fas fa-play"></i>
                     </button>
                 </div>
@@ -83,17 +87,69 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="floating-card card-1">
-                    <div class="card-icon">💻</div>
-                    <div class="card-text">Frontend Path</div>
+                <div class="hero-graphic">
+                    <div class="gradient-orb orb-1"></div>
+                    <div class="gradient-orb orb-2"></div>
+                    <div class="gradient-orb orb-3"></div>
                 </div>
-                <div class="floating-card card-2">
-                    <div class="card-icon">⚡</div>
-                    <div class="card-text">CommandBro</div>
+            </div>
+        </section>
+
+        <!-- Career Path Selector -->
+        <section class="career-selector" id="careerSelector">
+            <div class="career-content">
+                <h2>Choose Your Path</h2>
+                <p>Select a career path to explore the complete roadmap</p>
+                <div class="career-grid">
+                    <div class="career-card" data-path="frontend">
+                        <div class="career-icon">🎨</div>
+                        <h3>Frontend Developer</h3>
+                        <p>Build amazing user interfaces</p>
+                    </div>
+                    <div class="career-card" data-path="backend">
+                        <div class="career-icon">⚙️</div>
+                        <h3>Backend Developer</h3>
+                        <p>Create robust server systems</p>
+                    </div>
+                    <div class="career-card" data-path="devops">
+                        <div class="career-icon">🚀</div>
+                        <h3>DevOps Engineer</h3>
+                        <p>Automate and scale infrastructure</p>
+                    </div>
+                    <div class="career-card" data-path="fullstack">
+                        <div class="career-icon">🔄</div>
+                        <h3>Full Stack Developer</h3>
+                        <p>Master both frontend and backend</p>
+                    </div>
+                    <div class="career-card" data-path="android">
+                        <div class="career-icon">📱</div>
+                        <h3>Android Developer</h3>
+                        <p>Build mobile applications</p>
+                    </div>
+                    <div class="career-card" data-path="react">
+                        <div class="career-icon">⚛️</div>
+                        <h3>React Developer</h3>
+                        <p>Specialize in React ecosystem</p>
+                    </div>
                 </div>
-                <div class="floating-card card-3">
-                    <div class="card-icon">📄</div>
-                    <div class="card-text">ResumeBro</div>
+            </div>
+        </section>
+
+        <!-- Interactive Roadmap -->
+        <section class="roadmap-viewer" id="roadmapViewer" style="display: none;">
+            <div class="roadmap-header">
+                <button class="back-btn" id="backBtn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M12 4l-8 6 8 6V4z"/>
+                    </svg>
+                    Back to Paths
+                </button>
+                <h2 id="roadmapTitle">Frontend Developer Roadmap</h2>
+            </div>
+            <div class="roadmap-content" id="roadmapContent">
+                <div class="loading-roadmap">
+                    <div class="loading-spinner"></div>
+                    <p>Loading roadmap...</p>
                 </div>
             </div>
         </section>
@@ -108,14 +164,6 @@
                         </svg>
                     </div>
                     <span>Learning Path</span>
-                </button>
-                <button class="nav-tab" data-module="terminal">
-                    <div class="tab-icon">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M2 4h16v12H2V4zm2 2v8h12V6H4zm2 2l2 2-2 2v-1h4v-2H6V7z"/>
-                        </svg>
-                    </div>
-                    <span>CommandBro</span>
                 </button>
                 <button class="nav-tab" data-module="resume">
                     <div class="tab-icon">
@@ -168,26 +216,25 @@
                         </div>
                     </div>
                     <div class="user-stats">
-                            <div class="stat">
-                                <span class="stat-value" id="userLevel">1</span>
-                                <span class="stat-label">Level</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="userXP">0</span>
-                                <span class="stat-label">XP</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value" id="completedSkills">0</span>
-                                <span class="stat-label">Skills</span>
-                            </div>
+                        <div class="stat">
+                            <span class="stat-value" id="userLevel">1</span>
+                            <span class="stat-label">Level</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="userXP">0</span>
+                            <span class="stat-label">XP</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="completedSkills">0</span>
+                            <span class="stat-label">Skills</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="skilltree-container">
                     <div class="roadmap-header" id="roadmapHeader">
-                        <h3 id="roadmapTitle">Frontend Developer Roadmap</h3>
-                        <p id="roadmapDescription">Step by step guide to becoming a modern frontend developer</p>
+                        <h3 id="roadmapTitle">Frontend Developer Path</h3>
+                        <p id="roadmapDescription">Your fast-track to frontend mastery</p>
                     </div>
                     <div class="roadmap-progress" id="roadmapProgress">
                         <div class="progress-bar">
@@ -219,69 +266,6 @@
                                 <i class="fas fa-check"></i>
                                 Mark Complete
                             </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- TerminalGPT Module -->
-            <section class="module" id="terminal">
-                <div class="module-header">
-                    <h2><i class="fas fa-terminal"></i> CommandBro</h2>
-                    <div class="terminal-controls">
-                        <div class="custom-dropdown" id="shellDropdown">
-                            <div class="dropdown-trigger" id="shellTrigger">
-                                <span class="selected-text" id="shellSelectedText">Bash</span>
-                                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                    <path d="M4 6l4 4 4-4H4z"/>
-                                </svg>
-                            </div>
-                            <div class="dropdown-menu" id="shellMenu">
-                                <div class="dropdown-item active" data-value="bash">
-                                    <div class="item-icon">💻</div>
-                                    <div class="item-content">
-                                        <div class="item-title">Bash</div>
-                                        <div class="item-desc">Linux/macOS shell</div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-item" data-value="zsh">
-                                    <div class="item-icon">⚡</div>
-                                    <div class="item-content">
-                                        <div class="item-title">Zsh</div>
-                                        <div class="item-desc">Enhanced shell</div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-item" data-value="powershell">
-                                    <div class="item-icon">🔷</div>
-                                    <div class="item-content">
-                                        <div class="item-title">PowerShell</div>
-                                        <div class="item-desc">Windows shell</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="terminal-interface">
-                    <div class="terminal-input">
-                        <div class="input-label">
-                            <i class="fas fa-robot"></i>
-                            Ask for any command:
-                        </div>
-                        <div class="input-container">
-                            <input type="text" id="terminalQuery" placeholder="e.g., How to install Docker on Ubuntu?" autocomplete="off">
-                            <button class="execute-btn" id="executeQuery">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="terminal-output" id="terminalOutput">
-                        <div class="welcome-message">
-                            <i class="fas fa-terminal"></i>
-                            <h3>Welcome to TerminalGPT</h3>
-                            <p>Ask for any command and get instant terminal solutions with explanations.</p>
                         </div>
                     </div>
                 </div>
@@ -352,7 +336,7 @@
                         <div class="input-section">
                             <label>
                                 <i class="fas fa-upload"></i>
-                                Paste your resume or upload file:
+                                Drop your resume here:
                             </label>
                             <textarea id="resumeInput" placeholder="Paste your resume content here..."></textarea>
                             <div class="file-upload">
@@ -372,13 +356,77 @@
                     <div class="resume-output" id="resumeOutput">
                         <div class="output-placeholder">
                             <i class="fas fa-file-alt"></i>
-                            <h3>AI-Optimized Resume</h3>
-                            <p>Upload or paste your resume to get AI-powered optimization suggestions.</p>
+                            <h3>Your Optimized Resume</h3>
+                            <p>Upload your resume and watch it get 10x better.</p>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <div class="logo-icon">
+                                <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                                    <path d="M16 2L30 9v14L16 30 2 23V9l14-7z" fill="url(#footerLogoGradient)"/>
+                                    <defs>
+                                        <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#00ff88"/>
+                                            <stop offset="100%" stop-color="#00d4ff"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <span class="logo-text">UpskillBro</span>
+                        </div>
+                        <p class="footer-tagline">Level up fast. No fluff. Just growth.</p>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <div class="footer-section">
+                            <h4>Product</h4>
+                            <a href="#roadmaps">Roadmaps</a>
+                            <a href="#tools">Tools</a>
+                            <a href="#practice">Practice</a>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Resources</h4>
+                            <a href="#">Documentation</a>
+                            <a href="#">Tutorials</a>
+                            <a href="#">Blog</a>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Community</h4>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                                Twitter
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-discord"></i>
+                                Discord
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2024 UpskillBro. Built for developers, by developers.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- Search Modal -->
@@ -407,7 +455,6 @@
 
     <!-- Scripts -->
     <script src="modules/skilltree.js"></script>
-    <script src="modules/terminalgpt.js"></script>
     <script src="modules/resumegpt.js"></script>
     <script src="script.js"></script>
 </body>

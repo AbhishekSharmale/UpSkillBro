@@ -148,6 +148,75 @@ body {
 }
 
 /* Hero Section */
+
+/* Rotating Taglines */
+.rotating-taglines {
+    position: relative;
+    height: 2rem;
+    margin-bottom: 2.5rem;
+    animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+.tagline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1.1rem;
+    color: #9ca3af;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    margin: 0;
+    font-weight: 500;
+}
+
+.tagline.active {
+    opacity: 1;
+}
+
+/* Hero Visual Updates */
+.hero-graphic {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    filter: blur(1px);
+    animation: float 8s ease-in-out infinite;
+}
+
+.orb-1 {
+    width: 120px;
+    height: 120px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    opacity: 0.6;
+}
+
+.orb-2 {
+    width: 80px;
+    height: 80px;
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+    opacity: 0.4;
+    background: var(--gradient-secondary);
+}
+
+.orb-3 {
+    width: 60px;
+    height: 60px;
+    bottom: 30%;
+    left: 40%;
+    animation-delay: 4s;
+    opacity: 0.5;
+}
 .hero {
   display: flex;
   align-items: center;
@@ -561,12 +630,169 @@ body {
   }
 }
 
+/* Career Path Selector */
+.career-selector {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.career-content h2 {
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.career-content p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+}
+
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.career-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.career-card:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+}
+
+.career-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.career-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.career-card p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Roadmap Viewer */
+.roadmap-viewer {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.roadmap-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.roadmap-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  min-height: 400px;
+}
+
+.loading-roadmap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.roadmap-node {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.roadmap-node:hover {
+  border-color: var(--accent-primary);
+  transform: translateX(10px);
+}
+
+.roadmap-node.completed {
+  border-color: var(--accent-primary);
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.node-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.node-description {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .hero {
     flex-direction: column;
     text-align: center;
     gap: 2rem;
+    padding: 0 1rem;
   }
   
   .hero-visual {
@@ -576,6 +802,11 @@ body {
   .nav-links {
     display: none;
   }
+  
+  .career-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -584,24 +815,104 @@ body {
   }
   
   .hero {
-    padding: 0 1rem;
+    padding: 2rem 1rem;
+    min-height: 80vh;
   }
   
   .hero-title {
     font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
   
   .hero-ctas {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+  }
+  
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
   }
   
   .hero-stats {
     gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .rotating-taglines {
+    height: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+  }
+  
+  .career-selector {
+    padding: 3rem 1rem;
+  }
+  
+  .career-content h2 {
+    font-size: 2rem;
+  }
+  
+  .career-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .career-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .career-card {
+    padding: 1.5rem;
+  }
+  
+  .roadmap-viewer {
+    padding: 1rem;
+  }
+  
+  .roadmap-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .roadmap-content {
+    padding: 1.5rem;
   }
   
   .main-content {
     padding: 2rem 1rem;
+  }
+  
+  .section-nav {
+    padding: 0 1rem;
+  }
+  
+  .nav-tabs {
+    justify-content: center;
+    gap: 0;
+  }
+  
+  .nav-tab {
+    flex: 1;
+    padding: 1rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .nav-tab span {
+    display: none;
   }
   
   .footer-main {
@@ -622,23 +933,79 @@ body {
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+  
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
-  .primary-btn,
-  .secondary-btn {
-    width: 100%;
-    justify-content: center;
+  .hero-subtitle {
+    font-size: 1rem;
   }
   
-  .nav-tabs {
-    overflow-x: auto;
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .hero-stats {
+    gap: 1.5rem;
+  }
+  
+  .rotating-taglines {
+    height: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tagline {
+    font-size: 0.95rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .career-selector {
+    padding: 2rem 1rem;
+  }
+  
+  .career-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .career-card {
+    padding: 1.25rem;
+  }
+  
+  .career-icon {
+    font-size: 2.5rem;
+  }
+  
+  .roadmap-header h2 {
+    font-size: 1.5rem;
   }
   
   .nav-tab {
-    white-space: nowrap;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 0.25rem;
+    font-size: 0.8rem;
+  }
+  
+  .tab-icon {
+    margin-bottom: 0.25rem;
+  }
+  
+  .custom-dropdown {
+    min-width: 200px;
+  }
+  
+  .dropdown-trigger {
+    padding: 0.75rem 1rem;
+  }
+  
+  .dropdown-item {
+    padding: 0.75rem 1rem;
   }
 }
 
