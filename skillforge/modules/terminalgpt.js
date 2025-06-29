@@ -1,0 +1,431 @@
+// TerminalGPT Module
+window.TerminalGPT = {
+    commandHistory: [],
+    savedCommands: JSON.parse(localStorage.getItem('skillforge_saved_commands') || '[]'),
+
+    init() {
+        this.setupEventListeners();
+        this.loadSavedCommands();
+        this.initCustomDropdown();
+    },
+
+    setupEventListeners() {
+        const queryInput = document.getElementById('terminalQuery');
+        const executeBtn = document.getElementById('executeQuery');
+        const shellSelector = document.getElementById('shellSelector');
+
+        // Execute query
+        executeBtn.addEventListener('click', () => this.executeQuery());
+        queryInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.executeQuery();
+        });
+
+        // Initialize current shell
+        this.currentShell = 'bash';
+    },
+
+    async executeQuery() {
+        const query = document.getElementById('terminalQuery').value.trim();
+        if (!query) return;
+
+        const shell = document.getElementById('shellSelector').value;
+        
+        // Show loading
+        this.showTypingIndicator();
+        
+        try {
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            const response = this.generateCommandResponse(query, shell);
+            this.displayCommandResponse(response);
+            
+            // Add to history
+            this.commandHistory.push({ query, response, timestamp: Date.now() });
+            
+            // Clear input
+            document.getElementById('terminalQuery').value = '';
+            
+        } catch (error) {
+            this.showError('Failed to generate command. Please try again.');
+        }
+    },
+
+    generateCommandResponse(query, shell) {
+        // Mock command generation based on query
+        const commands = this.getCommandForQuery(query, shell);
+        
+        return {
+            query,
+            shell,
+            commands,
+            explanation: this.getExplanation(query, commands),
+            timestamp: Date.now()
+        };
+    },
+
+    getCommandForQuery(query, shell) {
+        const lowerQuery = query.toLowerCase();
+        
+        // Docker commands
+        if (lowerQuery.includes('docker') && lowerQuery.includes('install')) {
+            return shell === 'powershell' ? [
+                'Invoke-WebRequest -Uri https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe -OutFile DockerDesktopInstaller.exe',
+                '.\\DockerDesktopInstaller.exe'
+            ] : [
+                'curl -fsSL https://get.docker.com -o get-docker.sh',
+                'sudo sh get-docker.sh',
+                'sudo usermod -aG docker $USER'
+            ];
+        }
+        
+        // Nginx commands
+        if (lowerQuery.includes('nginx') && lowerQuery.includes('install')) {
+            return shell === 'powershell' ? [
+                'choco install nginx'
+            ] : [
+                'sudo apt update',
+                'sudo apt install nginx -y',
+                'sudo systemctl start nginx',
+                'sudo systemctl enable nginx'
+            ];
+        }
+        
+        // Node.js commands
+        if (lowerQuery.includes('node') && lowerQuery.includes('install')) {
+            return shell === 'powershell' ? [
+                'choco install nodejs'
+            ] : [
+                'curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -',
+                'sudo apt-get install -y nodejs'
+            ];
+        }
+        
+        // Git commands
+        if (lowerQuery.includes('git') && lowerQuery.includes('clone')) {
+            return [
+                'git clone <repository-url>',
+                'cd <repository-name>',
+                'git status'
+            ];
+        }
+        
+        // File operations
+        if (lowerQuery.includes('create') && lowerQuery.includes('file')) {
+            return shell === 'powershell' ? [
+                'New-Item -Path "filename.txt" -ItemType File',
+                'Add-Content -Path "filename.txt" -Value "Hello World"'
+            ] : [
+                'touch filename.txt',
+                'echo "Hello World" > filename.txt'
+            ];
+        }
+        
+        // Process management
+        if (lowerQuery.includes('kill') && lowerQuery.includes('process')) {
+            return shell === 'powershell' ? [
+                'Get-Process | Where-Object {$_.Name -eq "processname"}',
+                'Stop-Process -Name "processname" -Force'
+            ] : [
+                'ps aux | grep processname',
+                'kill -9 $(pgrep processname)'
+            ];
+        }
+        
+        // Default response
+        return [
+            `# Command for: ${query}`,
+            '# This is a mock response. In a real implementation,',
+            '# this would be generated by an AI model.',
+            'echo "Command generated successfully"'
+        ];
+    },
+
+    getExplanation(query, commands) {
+        const explanations = {
+            docker: 'Docker commands for containerization. The first command downloads Docker, the second installs it, and the third adds your user to the docker group.',
+            nginx: 'Nginx web server installation. Updates package list, installs nginx, starts the service, and enables it to start on boot.',
+            node: 'Node.js installation using the official repository. Downloads the setup script and installs the latest LTS version.',
+            git: 'Git version control commands. Clone a repository, navigate to it, and check the current status.',
+            file: 'File creation commands. Creates a new file and adds content to it.',
+            process: 'Process management commands. Find running processes and terminate them if needed.'
+        };
+        
+        const lowerQuery = query.toLowerCase();
+        for (const [key, explanation] of Object.entries(explanations)) {
+            if (lowerQuery.includes(key)) {
+                return explanation;
+            }
+        }
+        
+        return 'This command performs the requested operation. Always review commands before executing them in your terminal.';
+    },
+
+    displayCommandResponse(response) {
+        const output = document.getElementById('terminalOutput');
+        
+        // Remove welcome message if present
+        const welcomeMessage = output.querySelector('.welcome-message');
+        if (welcomeMessage) {
+            welcomeMessage.remove();
+        }
+        
+        const commandBlock = document.createElement('div');
+        commandBlock.className = 'command-block';
+        commandBlock.innerHTML = `
+            <div class="command-header">
+                <span class="command-title">${response.shell.toUpperCase()}: ${response.query}</span>
+                <button class="copy-btn" onclick="TerminalGPT.copyCommands('${response.commands.join('\\n')}')">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+            <div class="command-code">${response.commands.join('\n')}</div>
+            <div class="command-explanation">
+                <strong>Explanation:</strong> ${response.explanation}
+            </div>
+            <div class="command-actions">
+                <button class="action-btn save-btn" onclick="TerminalGPT.saveCommand('${response.commands.join('\\n')}', '${response.query}')">
+                    <i class="fas fa-bookmark"></i> Save
+                </button>
+                <button class="action-btn share-btn" onclick="TerminalGPT.shareCommand('${response.commands.join('\\n')}')">
+                    <i class="fas fa-share"></i> Share
+                </button>
+            </div>
+        `;
+        
+        output.appendChild(commandBlock);
+        
+        // Scroll to bottom
+        output.scrollTop = output.scrollHeight;
+        
+        // Remove typing indicator
+        this.hideTypingIndicator();
+    },
+
+    showTypingIndicator() {
+        const output = document.getElementById('terminalOutput');
+        const indicator = document.createElement('div');
+        indicator.className = 'typing-indicator';
+        indicator.innerHTML = `
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span>Generating command...</span>
+        `;
+        output.appendChild(indicator);
+        output.scrollTop = output.scrollHeight;
+    },
+
+    hideTypingIndicator() {
+        const indicator = document.querySelector('.typing-indicator');
+        if (indicator) indicator.remove();
+    },
+
+    copyCommands(commands) {
+        navigator.clipboard.writeText(commands).then(() => {
+            this.showNotification('Commands copied to clipboard!', 'success');
+        }).catch(() => {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = commands;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            this.showNotification('Commands copied to clipboard!', 'success');
+        });
+    },
+
+    saveCommand(commands, query) {
+        const savedCommand = {
+            id: Date.now(),
+            query,
+            commands,
+            timestamp: Date.now()
+        };
+        
+        this.savedCommands.unshift(savedCommand);
+        this.savedCommands = this.savedCommands.slice(0, 50); // Keep only last 50
+        
+        localStorage.setItem('skillforge_saved_commands', JSON.stringify(this.savedCommands));
+        this.showNotification('Command saved!', 'success');
+    },
+
+    shareCommand(commands) {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Terminal Command',
+                text: commands
+            });
+        } else {
+            this.copyCommands(commands);
+            this.showNotification('Command copied for sharing!', 'info');
+        }
+    },
+
+    loadSavedCommands() {
+        // This could populate a sidebar or dropdown with saved commands
+        console.log(`Loaded ${this.savedCommands.length} saved commands`);
+    },
+
+    showNotification(message, type) {
+        if (window.UpskillBro) {
+            window.UpskillBro.showNotification(message, type);
+        }
+    },
+
+    showError(message) {
+        this.showNotification(message, 'error');
+    },
+
+    focus() {
+        document.getElementById('terminalQuery').focus();
+    },
+    
+    initCustomDropdown() {
+        const dropdown = document.getElementById('shellDropdown');
+        const trigger = document.getElementById('shellTrigger');
+        const menu = document.getElementById('shellMenu');
+        const selectedText = document.getElementById('shellSelectedText');
+        
+        if (!dropdown || !trigger || !menu || !selectedText) return;
+        
+        // Toggle dropdown
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = menu.classList.contains('show');
+            
+            if (isOpen) {
+                this.closeDropdown();
+            } else {
+                this.openDropdown();
+            }
+        });
+        
+        // Handle item selection
+        menu.addEventListener('click', (e) => {
+            const item = e.target.closest('.dropdown-item');
+            if (item) {
+                const value = item.dataset.value;
+                const title = item.querySelector('.item-title').textContent;
+                
+                // Update active state
+                menu.querySelectorAll('.dropdown-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Update selected text
+                selectedText.textContent = title;
+                
+                // Change shell
+                this.currentShell = value;
+                this.showNotification(`Switched to ${title}`, 'info');
+                
+                // Close dropdown
+                this.closeDropdown();
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                this.closeDropdown();
+            }
+        });
+    },
+    
+    openDropdown() {
+        const trigger = document.getElementById('shellTrigger');
+        const menu = document.getElementById('shellMenu');
+        
+        if (trigger && menu) {
+            trigger.classList.add('active');
+            menu.classList.add('show');
+        }
+    },
+    
+    closeDropdown() {
+        const trigger = document.getElementById('shellTrigger');
+        const menu = document.getElementById('shellMenu');
+        
+        if (trigger && menu) {
+            trigger.classList.remove('active');
+            menu.classList.remove('show');
+        }
+    }
+};
+
+// Add terminal-specific styles
+const terminalStyles = document.createElement('style');
+terminalStyles.textContent = `
+    .typing-indicator {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px;
+        color: var(--accent-primary);
+        font-style: italic;
+    }
+    
+    .typing-dots {
+        display: flex;
+        gap: 4px;
+    }
+    
+    .typing-dots span {
+        width: 6px;
+        height: 6px;
+        background: var(--accent-primary);
+        border-radius: 50%;
+        animation: typingDot 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0s; }
+    
+    @keyframes typingDot {
+        0%, 80%, 100% {
+            transform: scale(0);
+            opacity: 0.5;
+        }
+        40% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    .command-actions {
+        display: flex;
+        gap: 8px;
+        padding: 12px 16px;
+        border-top: 1px solid var(--border-color);
+        background: var(--tertiary-bg);
+    }
+    
+    .action-btn {
+        background: none;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        padding: 6px 12px;
+        color: var(--text-secondary);
+        cursor: pointer;
+        font-size: 12px;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .action-btn:hover {
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+    }
+    
+    .save-btn:hover {
+        border-color: var(--accent-secondary);
+        color: var(--accent-secondary);
+    }
+`;
+document.head.appendChild(terminalStyles);

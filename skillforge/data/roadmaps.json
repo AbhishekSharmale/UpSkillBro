@@ -1,0 +1,380 @@
+{
+  "frontend": {
+    "title": "Frontend Developer",
+    "description": "Your fast-track to frontend mastery",
+    "levels": [
+      {
+        "level": 1,
+        "title": "Internet & Web Fundamentals",
+        "skills": [
+          {
+            "id": "how-internet-works",
+            "name": "How does the internet work?",
+            "type": "concept",
+            "resources": ["https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_does_the_Internet_work"]
+          },
+          {
+            "id": "what-is-http",
+            "name": "What is HTTP?",
+            "type": "concept",
+            "resources": ["https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"]
+          },
+          {
+            "id": "browsers-work",
+            "name": "How do browsers work?",
+            "type": "concept",
+            "resources": ["https://web.dev/howbrowserswork/"]
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "HTML & CSS",
+        "skills": [
+          {
+            "id": "html-basics",
+            "name": "HTML Basics",
+            "type": "skill",
+            "resources": ["https://developer.mozilla.org/en-US/docs/Learn/HTML"]
+          },
+          {
+            "id": "css-basics",
+            "name": "CSS Basics",
+            "type": "skill",
+            "resources": ["https://developer.mozilla.org/en-US/docs/Learn/CSS"]
+          },
+          {
+            "id": "css-flexbox",
+            "name": "CSS Flexbox",
+            "type": "skill",
+            "resources": ["https://css-tricks.com/snippets/css/a-guide-to-flexbox/"]
+          },
+          {
+            "id": "css-grid",
+            "name": "CSS Grid",
+            "type": "skill",
+            "resources": ["https://css-tricks.com/snippets/css/complete-guide-grid/"]
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "title": "JavaScript Fundamentals",
+        "skills": [
+          {
+            "id": "js-basics",
+            "name": "JavaScript Basics",
+            "type": "skill",
+            "resources": ["https://javascript.info/"]
+          },
+          {
+            "id": "dom-manipulation",
+            "name": "DOM Manipulation",
+            "type": "skill",
+            "resources": ["https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"]
+          },
+          {
+            "id": "fetch-api",
+            "name": "Fetch API / Ajax",
+            "type": "skill",
+            "resources": ["https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"]
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "title": "Version Control & Package Managers",
+        "skills": [
+          {
+            "id": "git-github",
+            "name": "Git & GitHub",
+            "type": "tool",
+            "resources": ["https://git-scm.com/doc"]
+          },
+          {
+            "id": "npm",
+            "name": "npm",
+            "type": "tool",
+            "resources": ["https://docs.npmjs.com/"]
+          },
+          {
+            "id": "yarn",
+            "name": "Yarn",
+            "type": "tool",
+            "resources": ["https://yarnpkg.com/getting-started"]
+          }
+        ]
+      },
+      {
+        "level": 5,
+        "title": "CSS Frameworks",
+        "skills": [
+          {
+            "id": "tailwind",
+            "name": "Tailwind CSS",
+            "type": "framework",
+            "resources": ["https://tailwindcss.com/docs"]
+          },
+          {
+            "id": "bootstrap",
+            "name": "Bootstrap",
+            "type": "framework",
+            "resources": ["https://getbootstrap.com/docs/"]
+          }
+        ]
+      },
+      {
+        "level": 6,
+        "title": "JavaScript Frameworks",
+        "skills": [
+          {
+            "id": "react",
+            "name": "React",
+            "type": "framework",
+            "resources": ["https://react.dev/"]
+          },
+          {
+            "id": "vue",
+            "name": "Vue.js",
+            "type": "framework",
+            "resources": ["https://vuejs.org/guide/"]
+          },
+          {
+            "id": "angular",
+            "name": "Angular",
+            "type": "framework",
+            "resources": ["https://angular.io/docs"]
+          }
+        ]
+      }
+    ]
+  },
+  "backend": {
+    "title": "Backend Developer",
+    "description": "Master backend development fast",
+    "levels": [
+      {
+        "level": 1,
+        "title": "Programming Language",
+        "skills": [
+          {
+            "id": "javascript-node",
+            "name": "JavaScript (Node.js)",
+            "type": "language",
+            "resources": ["https://nodejs.org/en/docs/"]
+          },
+          {
+            "id": "python",
+            "name": "Python",
+            "type": "language",
+            "resources": ["https://docs.python.org/3/"]
+          },
+          {
+            "id": "java",
+            "name": "Java",
+            "type": "language",
+            "resources": ["https://docs.oracle.com/en/java/"]
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Version Control & OS",
+        "skills": [
+          {
+            "id": "git",
+            "name": "Git",
+            "type": "tool",
+            "resources": ["https://git-scm.com/doc"]
+          },
+          {
+            "id": "linux-basics",
+            "name": "Linux Basics",
+            "type": "concept",
+            "resources": ["https://linuxjourney.com/"]
+          },
+          {
+            "id": "terminal-usage",
+            "name": "Terminal Usage",
+            "type": "skill",
+            "resources": ["https://ubuntu.com/tutorials/command-line-for-beginners"]
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "title": "Databases",
+        "skills": [
+          {
+            "id": "sql-basics",
+            "name": "SQL Basics",
+            "type": "skill",
+            "resources": ["https://www.w3schools.com/sql/"]
+          },
+          {
+            "id": "postgresql",
+            "name": "PostgreSQL",
+            "type": "database",
+            "resources": ["https://www.postgresql.org/docs/"]
+          },
+          {
+            "id": "mongodb",
+            "name": "MongoDB",
+            "type": "database",
+            "resources": ["https://docs.mongodb.com/"]
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "title": "APIs & Web Services",
+        "skills": [
+          {
+            "id": "rest-apis",
+            "name": "REST APIs",
+            "type": "concept",
+            "resources": ["https://restfulapi.net/"]
+          },
+          {
+            "id": "graphql",
+            "name": "GraphQL",
+            "type": "concept",
+            "resources": ["https://graphql.org/learn/"]
+          },
+          {
+            "id": "authentication",
+            "name": "Authentication",
+            "type": "concept",
+            "resources": ["https://auth0.com/docs"]
+          }
+        ]
+      }
+    ]
+  },
+  "devops": {
+    "title": "DevOps Engineer",
+    "description": "Level up to DevOps mastery",
+    "levels": [
+      {
+        "level": 1,
+        "title": "Programming Language",
+        "skills": [
+          {
+            "id": "python-devops",
+            "name": "Python",
+            "type": "language",
+            "resources": ["https://docs.python.org/3/"]
+          },
+          {
+            "id": "bash-scripting",
+            "name": "Bash Scripting",
+            "type": "language",
+            "resources": ["https://tldp.org/LDP/Bash-Beginners-Guide/html/"]
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Operating Systems",
+        "skills": [
+          {
+            "id": "linux-admin",
+            "name": "Linux Administration",
+            "type": "skill",
+            "resources": ["https://linuxacademy.com/"]
+          },
+          {
+            "id": "networking",
+            "name": "Networking",
+            "type": "concept",
+            "resources": ["https://www.cisco.com/c/en/us/solutions/enterprise-networks/networking-basics.html"]
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "title": "Containerization",
+        "skills": [
+          {
+            "id": "docker",
+            "name": "Docker",
+            "type": "tool",
+            "resources": ["https://docs.docker.com/"]
+          },
+          {
+            "id": "kubernetes",
+            "name": "Kubernetes",
+            "type": "tool",
+            "resources": ["https://kubernetes.io/docs/"]
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "title": "Cloud Providers",
+        "skills": [
+          {
+            "id": "aws",
+            "name": "AWS",
+            "type": "cloud",
+            "resources": ["https://docs.aws.amazon.com/"]
+          },
+          {
+            "id": "azure",
+            "name": "Azure",
+            "type": "cloud",
+            "resources": ["https://docs.microsoft.com/en-us/azure/"]
+          },
+          {
+            "id": "gcp",
+            "name": "Google Cloud",
+            "type": "cloud",
+            "resources": ["https://cloud.google.com/docs"]
+          }
+        ]
+      },
+      {
+        "level": 5,
+        "title": "Infrastructure as Code",
+        "skills": [
+          {
+            "id": "terraform",
+            "name": "Terraform",
+            "type": "tool",
+            "resources": ["https://www.terraform.io/docs"]
+          },
+          {
+            "id": "ansible",
+            "name": "Ansible",
+            "type": "tool",
+            "resources": ["https://docs.ansible.com/"]
+          }
+        ]
+      },
+      {
+        "level": 6,
+        "title": "CI/CD",
+        "skills": [
+          {
+            "id": "jenkins",
+            "name": "Jenkins",
+            "type": "tool",
+            "resources": ["https://www.jenkins.io/doc/"]
+          },
+          {
+            "id": "github-actions",
+            "name": "GitHub Actions",
+            "type": "tool",
+            "resources": ["https://docs.github.com/en/actions"]
+          },
+          {
+            "id": "gitlab-ci",
+            "name": "GitLab CI",
+            "type": "tool",
+            "resources": ["https://docs.gitlab.com/ee/ci/"]
+          }
+        ]
+      }
+    ]
+  }
+}
