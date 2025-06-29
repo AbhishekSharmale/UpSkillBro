@@ -273,91 +273,131 @@
 
             <!-- ResumeGPT Module -->
             <section class="module" id="resume">
-                <div class="module-header">
-                    <h2><i class="fas fa-file-alt"></i> ResumeBro</h2>
-                    <div class="resume-controls">
-                        <div class="custom-dropdown" id="roleDropdown">
-                            <div class="dropdown-trigger" id="roleTrigger">
-                                <span class="selected-text" id="roleSelectedText">Full Stack Developer</span>
-                                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                    <path d="M4 6l4 4 4-4H4z"/>
-                                </svg>
+                <div class="resume-container">
+                    <!-- Header Section -->
+                    <div class="resume-header">
+                        <div class="header-content">
+                            <div class="header-text">
+                                <h1>ResumeBro</h1>
+                                <p>AI-powered resume optimization that gets you hired</p>
                             </div>
-                            <div class="dropdown-menu" id="roleMenu">
-                                <div class="dropdown-item active" data-value="fullstack">
-                                    <div class="item-icon">🔄</div>
-                                    <div class="item-content">
-                                        <div class="item-title">Full Stack Developer</div>
-                                        <div class="item-desc">Frontend + Backend</div>
+                            <div class="role-selector-wrapper">
+                                <label class="selector-label">Target Role</label>
+                                <div class="custom-dropdown modern" id="roleDropdown">
+                                    <div class="dropdown-trigger" id="roleTrigger">
+                                        <span class="selected-text" id="roleSelectedText">Full Stack Developer</span>
+                                        <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                            <path d="M4 6l4 4 4-4H4z"/>
+                                        </svg>
                                     </div>
-                                </div>
-                                <div class="dropdown-item" data-value="backend">
-                                    <div class="item-icon">⚙️</div>
-                                    <div class="item-content">
-                                        <div class="item-title">Backend Developer</div>
-                                        <div class="item-desc">Server-side focus</div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-item" data-value="frontend">
-                                    <div class="item-icon">🎨</div>
-                                    <div class="item-content">
-                                        <div class="item-title">Frontend Developer</div>
-                                        <div class="item-desc">UI/UX focus</div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-item" data-value="devops">
-                                    <div class="item-icon">🚀</div>
-                                    <div class="item-content">
-                                        <div class="item-title">DevOps Engineer</div>
-                                        <div class="item-desc">Infrastructure focus</div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-item" data-value="sre">
-                                    <div class="item-icon">🔧</div>
-                                    <div class="item-content">
-                                        <div class="item-title">SRE</div>
-                                        <div class="item-desc">Site Reliability</div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-item" data-value="mobile">
-                                    <div class="item-icon">📱</div>
-                                    <div class="item-content">
-                                        <div class="item-title">Mobile Developer</div>
-                                        <div class="item-desc">iOS/Android apps</div>
+                                    <div class="dropdown-menu" id="roleMenu">
+                                        <div class="dropdown-item active" data-value="fullstack">
+                                            <div class="item-content">
+                                                <div class="item-title">Full Stack Developer</div>
+                                                <div class="item-desc">Frontend + Backend</div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-item" data-value="backend">
+                                            <div class="item-content">
+                                                <div class="item-title">Backend Developer</div>
+                                                <div class="item-desc">Server-side focus</div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-item" data-value="frontend">
+                                            <div class="item-content">
+                                                <div class="item-title">Frontend Developer</div>
+                                                <div class="item-desc">UI/UX focus</div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-item" data-value="devops">
+                                            <div class="item-content">
+                                                <div class="item-title">DevOps Engineer</div>
+                                                <div class="item-desc">Infrastructure focus</div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-item" data-value="sre">
+                                            <div class="item-content">
+                                                <div class="item-title">SRE</div>
+                                                <div class="item-desc">Site Reliability</div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-item" data-value="mobile">
+                                            <div class="item-content">
+                                                <div class="item-title">Mobile Developer</div>
+                                                <div class="item-desc">iOS/Android apps</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="resume-interface">
-                    <div class="resume-input">
-                        <div class="input-section">
-                            <label>
-                                <i class="fas fa-upload"></i>
-                                Drop your resume here:
-                            </label>
-                            <textarea id="resumeInput" placeholder="Paste your resume content here..."></textarea>
-                            <div class="file-upload">
-                                <input type="file" id="resumeFile" accept=".txt,.pdf,.doc,.docx" hidden>
-                                <button class="upload-btn" onclick="document.getElementById('resumeFile').click()">
-                                    <i class="fas fa-file-upload"></i>
-                                    Upload File
+                    <!-- Main Content -->
+                    <div class="resume-workspace">
+                        <!-- Input Panel -->
+                        <div class="input-panel">
+                            <div class="panel-header">
+                                <h3>Your Resume</h3>
+                                <div class="upload-options">
+                                    <input type="file" id="resumeFile" accept=".txt,.pdf,.doc,.docx" hidden>
+                                    <button class="upload-btn" onclick="document.getElementById('resumeFile').click()">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                            <path d="M8 1l3 3H9v6H7V4H5l3-3zM2 12h12v2H2v-2z"/>
+                                        </svg>
+                                        Upload
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="input-area">
+                                <textarea 
+                                    id="resumeInput" 
+                                    placeholder="Paste your resume content here or upload a file..."
+                                    class="resume-textarea"
+                                ></textarea>
+                            </div>
+                            <div class="input-footer">
+                                <div class="word-count" id="wordCount">0 words</div>
+                                <button class="optimize-btn" id="optimizeResume">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <path d="M8 0l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6L8 0z"/>
+                                    </svg>
+                                    Optimize Resume
                                 </button>
                             </div>
                         </div>
-                        <button class="optimize-btn" id="optimizeResume">
-                            <i class="fas fa-magic"></i>
-                            Optimize Resume
-                        </button>
-                    </div>
 
-                    <div class="resume-output" id="resumeOutput">
-                        <div class="output-placeholder">
-                            <i class="fas fa-file-alt"></i>
-                            <h3>Your Optimized Resume</h3>
-                            <p>Upload your resume and watch it get 10x better.</p>
+                        <!-- Output Panel -->
+                        <div class="output-panel" id="resumeOutput">
+                            <div class="panel-header">
+                                <h3>Optimized Version</h3>
+                                <div class="output-actions" style="display: none;" id="outputActions">
+                                    <button class="action-btn secondary" id="copyBtn">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                            <path d="M4 2h8v2H4V2zM2 4h12v10H2V4zm2 2v6h8V6H4z"/>
+                                        </svg>
+                                        Copy
+                                    </button>
+                                    <button class="action-btn primary" id="downloadBtn">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                            <path d="M8 10l3-3H9V1H7v6H5l3 3zM2 12h12v2H2v-2z"/>
+                                        </svg>
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="output-content">
+                                <div class="empty-state">
+                                    <div class="empty-icon">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                            <path d="M12 8h24v32H12V8z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                            <path d="M16 16h16M16 20h16M16 24h12M16 28h14" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <h4>Ready to optimize</h4>
+                                    <p>Add your resume content and click optimize to see AI-powered improvements</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

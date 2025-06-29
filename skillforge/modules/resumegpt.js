@@ -22,12 +22,13 @@ window.ResumeGPT = {
         // Initialize current role
         this.currentRole = 'fullstack';
 
-        // Auto-save resume input
+        // Auto-save resume input and update word count
         document.getElementById('resumeInput').addEventListener('input', 
             this.debounce((e) => {
                 this.currentResume = e.target.value;
                 localStorage.setItem('upskillbro_resume_draft', this.currentResume);
-            }, 1000)
+                this.updateWordCount(e.target.value);
+            }, 300)
         );
 
         // Load saved draft
@@ -377,6 +378,14 @@ ${data.keywords.join(' • ')}
 
     focus() {
         document.getElementById('resumeInput').focus();
+    },
+    
+    updateWordCount(text) {
+        const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+        const wordCountEl = document.getElementById('wordCount');
+        if (wordCountEl) {
+            wordCountEl.textContent = `${wordCount} words`;
+        }
     },
     
     initCustomDropdown() {
