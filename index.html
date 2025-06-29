@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpskillBro - Level up fast. No fluff. Just growth.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="cyber-grid"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <nav class="nav">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 2L30 9v14L16 30 2 23V9l14-7z" fill="url(#logoGradient)"/>
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#00ff88"/>
+                                    <stop offset="100%" stop-color="#00d4ff"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="logo-text">UpskillBro</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#roadmaps" class="nav-link">Roadmaps</a>
+                    <a href="#tools" class="nav-link">Tools</a>
+                    <a href="#practice" class="nav-link">Practice</a>
+                </div>
+                <button class="cta-btn" id="getStarted">Get Started</button>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 Level up your coding game</div>
+                <h1 class="hero-title">
+                    Crack interviews.<br>
+                    Track growth.<br>
+                    <span class="gradient-text">No fluff.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Master tech skills with gamified roadmaps, instant command tools, and AI-powered resume optimization.
+                </p>
+                <div class="hero-ctas">
+                    <button class="primary-btn" id="startLearning">
+                        <span>Start Learning</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="secondary-btn" id="exploreTools">
+                        <span>Explore Tools</span>
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Developers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Skills</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="card-icon">💻</div>
+                    <div class="card-text">Frontend Path</div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-text">CommandBro</div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-icon">📄</div>
+                    <div class="card-text">ResumeBro</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Navigation -->
+        <nav class="section-nav" id="sectionNav">
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-module="skilltree">
+                    <div class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2L3 7v11h4v-6h6v6h4V7l-7-5z"/>
+                        </svg>
+                    </div>
+                    <span>Learning Path</span>
+                </button>
+                <button class="nav-tab" data-module="terminal">
+                    <div class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 4h16v12H2V4zm2 2v8h12V6H4zm2 2l2 2-2 2v-1h4v-2H6V7z"/>
+                        </svg>
+                    </div>
+                    <span>CommandBro</span>
+                </button>
+                <button class="nav-tab" data-module="resume">
+                    <div class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M4 2h12v16H4V2zm2 2v12h8V4H6zm1 2h6v1H7V6zm0 2h6v1H7V8zm0 2h4v1H7v-1z"/>
+                        </svg>
+                    </div>
+                    <span>ResumeBro</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- SkillTree Module -->
+            <section class="module active" id="skilltree">
+                <div class="module-header">
+                    <h2><i class="fas fa-sitemap"></i> Learning Path</h2>
+                    <div class="roadmap-controls">
+                        <div class="custom-dropdown" id="roadmapDropdown">
+                            <div class="dropdown-trigger" id="dropdownTrigger">
+                                <span class="selected-text" id="selectedText">Frontend Developer</span>
+                                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M4 6l4 4 4-4H4z"/>
+                                </svg>
+                            </div>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <div class="dropdown-item active" data-value="frontend">
+                                    <div class="item-icon">💻</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Frontend Developer</div>
+                                        <div class="item-desc">React, Vue, Angular</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="backend">
+                                    <div class="item-icon">⚙️</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Backend Developer</div>
+                                        <div class="item-desc">Node.js, Python, Java</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="devops">
+                                    <div class="item-icon">🚀</div>
+                                    <div class="item-content">
+                                        <div class="item-title">DevOps Engineer</div>
+                                        <div class="item-desc">Docker, Kubernetes, AWS</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-stats">
+                            <div class="stat">
+                                <span class="stat-value" id="userLevel">1</span>
+                                <span class="stat-label">Level</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="userXP">0</span>
+                                <span class="stat-label">XP</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="completedSkills">0</span>
+                                <span class="stat-label">Skills</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skilltree-container">
+                    <div class="roadmap-header" id="roadmapHeader">
+                        <h3 id="roadmapTitle">Frontend Developer Roadmap</h3>
+                        <p id="roadmapDescription">Step by step guide to becoming a modern frontend developer</p>
+                    </div>
+                    <div class="roadmap-progress" id="roadmapProgress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0% Complete</span>
+                    </div>
+                    <div class="roadmap-levels" id="roadmapLevels">
+                        <!-- Roadmap levels will be dynamically loaded -->
+                    </div>
+                </div>
+
+                <!-- Skill Detail Modal -->
+                <div class="skill-modal" id="skillModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="skillTitle">Skill Title</h3>
+                            <button class="modal-close" id="modalClose">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="skill-description" id="skillDescription"></div>
+                            <div class="skill-resources" id="skillResources"></div>
+                            <div class="skill-checklist" id="skillChecklist"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn-complete" id="completeSkill">
+                                <i class="fas fa-check"></i>
+                                Mark Complete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TerminalGPT Module -->
+            <section class="module" id="terminal">
+                <div class="module-header">
+                    <h2><i class="fas fa-terminal"></i> CommandBro</h2>
+                    <div class="terminal-controls">
+                        <div class="custom-dropdown" id="shellDropdown">
+                            <div class="dropdown-trigger" id="shellTrigger">
+                                <span class="selected-text" id="shellSelectedText">Bash</span>
+                                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M4 6l4 4 4-4H4z"/>
+                                </svg>
+                            </div>
+                            <div class="dropdown-menu" id="shellMenu">
+                                <div class="dropdown-item active" data-value="bash">
+                                    <div class="item-icon">💻</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Bash</div>
+                                        <div class="item-desc">Linux/macOS shell</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="zsh">
+                                    <div class="item-icon">⚡</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Zsh</div>
+                                        <div class="item-desc">Enhanced shell</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="powershell">
+                                    <div class="item-icon">🔷</div>
+                                    <div class="item-content">
+                                        <div class="item-title">PowerShell</div>
+                                        <div class="item-desc">Windows shell</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="terminal-interface">
+                    <div class="terminal-input">
+                        <div class="input-label">
+                            <i class="fas fa-robot"></i>
+                            Ask for any command:
+                        </div>
+                        <div class="input-container">
+                            <input type="text" id="terminalQuery" placeholder="e.g., How to install Docker on Ubuntu?" autocomplete="off">
+                            <button class="execute-btn" id="executeQuery">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="terminal-output" id="terminalOutput">
+                        <div class="welcome-message">
+                            <i class="fas fa-terminal"></i>
+                            <h3>Welcome to TerminalGPT</h3>
+                            <p>Ask for any command and get instant terminal solutions with explanations.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ResumeGPT Module -->
+            <section class="module" id="resume">
+                <div class="module-header">
+                    <h2><i class="fas fa-file-alt"></i> ResumeBro</h2>
+                    <div class="resume-controls">
+                        <div class="custom-dropdown" id="roleDropdown">
+                            <div class="dropdown-trigger" id="roleTrigger">
+                                <span class="selected-text" id="roleSelectedText">Full Stack Developer</span>
+                                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                    <path d="M4 6l4 4 4-4H4z"/>
+                                </svg>
+                            </div>
+                            <div class="dropdown-menu" id="roleMenu">
+                                <div class="dropdown-item active" data-value="fullstack">
+                                    <div class="item-icon">🔄</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Full Stack Developer</div>
+                                        <div class="item-desc">Frontend + Backend</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="backend">
+                                    <div class="item-icon">⚙️</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Backend Developer</div>
+                                        <div class="item-desc">Server-side focus</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="frontend">
+                                    <div class="item-icon">🎨</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Frontend Developer</div>
+                                        <div class="item-desc">UI/UX focus</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="devops">
+                                    <div class="item-icon">🚀</div>
+                                    <div class="item-content">
+                                        <div class="item-title">DevOps Engineer</div>
+                                        <div class="item-desc">Infrastructure focus</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="sre">
+                                    <div class="item-icon">🔧</div>
+                                    <div class="item-content">
+                                        <div class="item-title">SRE</div>
+                                        <div class="item-desc">Site Reliability</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="mobile">
+                                    <div class="item-icon">📱</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Mobile Developer</div>
+                                        <div class="item-desc">iOS/Android apps</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-interface">
+                    <div class="resume-input">
+                        <div class="input-section">
+                            <label>
+                                <i class="fas fa-upload"></i>
+                                Paste your resume or upload file:
+                            </label>
+                            <textarea id="resumeInput" placeholder="Paste your resume content here..."></textarea>
+                            <div class="file-upload">
+                                <input type="file" id="resumeFile" accept=".txt,.pdf,.doc,.docx" hidden>
+                                <button class="upload-btn" onclick="document.getElementById('resumeFile').click()">
+                                    <i class="fas fa-file-upload"></i>
+                                    Upload File
+                                </button>
+                            </div>
+                        </div>
+                        <button class="optimize-btn" id="optimizeResume">
+                            <i class="fas fa-magic"></i>
+                            Optimize Resume
+                        </button>
+                    </div>
+
+                    <div class="resume-output" id="resumeOutput">
+                        <div class="output-placeholder">
+                            <i class="fas fa-file-alt"></i>
+                            <h3>AI-Optimized Resume</h3>
+                            <p>Upload or paste your resume to get AI-powered optimization suggestions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <div class="search-input">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search skills, commands, or resume tips...">
+                <button class="search-close" id="searchClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+        <div class="loading-text">Processing...</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="modules/skilltree.js"></script>
+    <script src="modules/terminalgpt.js"></script>
+    <script src="modules/resumegpt.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
