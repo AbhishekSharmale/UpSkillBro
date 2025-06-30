@@ -21,6 +21,7 @@ function initializeApp() {
     
     // Initialize modules
     if (window.SkillTree) SkillTree.init();
+    if (window.RoadmapModule) RoadmapModule.init();
     if (window.ResumeGPT) ResumeGPT.init();
     
     // Initialize career path selector

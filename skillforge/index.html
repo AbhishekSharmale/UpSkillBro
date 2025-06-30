@@ -165,6 +165,14 @@
                     </div>
                     <span>Learning Path</span>
                 </button>
+                <button class="nav-tab" data-module="roadmap">
+                    <div class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 4h16v2H2V4zm0 5h16v2H2V9zm0 5h16v2H2v-2zM6 2l4 4-4 4V2z"/>
+                        </svg>
+                    </div>
+                    <span>Roadmap</span>
+                </button>
                 <button class="nav-tab" data-module="resume">
                     <div class="tab-icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
@@ -266,6 +274,151 @@
                                 <i class="fas fa-check"></i>
                                 Mark Complete
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visual Roadmap Module -->
+            <section class="module" id="roadmap">
+                <div class="roadmap-module-container">
+                    <div class="roadmap-module-header">
+                        <div class="header-left">
+                            <h2>Visual Roadmap</h2>
+                            <p>Interactive flow diagram for your career path</p>
+                        </div>
+                        <div class="roadmap-role-selector">
+                            <div class="custom-dropdown modern" id="roadmapRoleDropdown">
+                                <div class="dropdown-trigger" id="roadmapRoleTrigger">
+                                    <span class="selected-text" id="roadmapRoleSelectedText">DevOps Engineer</span>
+                                    <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <path d="M4 6l4 4 4-4H4z"/>
+                                    </svg>
+                                </div>
+                                <div class="dropdown-menu" id="roadmapRoleMenu">
+                                    <div class="dropdown-item" data-value="devops">
+                                        <div class="item-content">
+                                            <div class="item-title">DevOps Engineer</div>
+                                            <div class="item-desc">Infrastructure & Automation</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item" data-value="frontend">
+                                        <div class="item-content">
+                                            <div class="item-title">Frontend Developer</div>
+                                            <div class="item-desc">UI/UX Development</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item" data-value="backend">
+                                        <div class="item-content">
+                                            <div class="item-title">Backend Developer</div>
+                                            <div class="item-desc">Server-side Development</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item" data-value="fullstack">
+                                        <div class="item-content">
+                                            <div class="item-title">Full Stack Developer</div>
+                                            <div class="item-desc">Frontend + Backend</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-flow-container">
+                        <div class="flow-diagram" id="flowDiagram">
+                            <!-- DevOps Roadmap Flow -->
+                            <div class="flow-section">
+                                <div class="section-title">Foundation</div>
+                                <div class="flow-row">
+                                    <div class="flow-node completed" data-skill="linux">
+                                        <div class="node-icon">🐧</div>
+                                        <div class="node-title">Linux</div>
+                                        <div class="node-subtitle">Command Line</div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node" data-skill="networking">
+                                        <div class="node-icon">🌐</div>
+                                        <div class="node-title">Networking</div>
+                                        <div class="node-subtitle">TCP/IP, DNS</div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node" data-skill="scripting">
+                                        <div class="node-icon">📜</div>
+                                        <div class="node-title">Scripting</div>
+                                        <div class="node-subtitle">Bash, Python</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flow-section">
+                                <div class="section-title">Version Control & CI/CD</div>
+                                <div class="flow-row">
+                                    <div class="flow-node" data-skill="git">
+                                        <div class="node-icon">📚</div>
+                                        <div class="node-title">Git</div>
+                                        <div class="node-subtitle">Version Control</div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node" data-skill="github-actions">
+                                        <div class="node-icon">⚡</div>
+                                        <div class="node-title">GitHub Actions</div>
+                                        <div class="node-subtitle">CI/CD Pipeline</div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node" data-skill="jenkins">
+                                        <div class="node-icon">🔧</div>
+                                        <div class="node-title">Jenkins</div>
+                                        <div class="node-subtitle">Automation</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flow-section">
+                                <div class="section-title">Containerization</div>
+                                <div class="flow-row">
+                                    <div class="flow-node" data-skill="docker">
+                                        <div class="node-icon">🐳</div>
+                                        <div class="node-title">Docker</div>
+                                        <div class="node-subtitle">Containers</div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node" data-skill="kubernetes">
+                                        <div class="node-icon">☸️</div>
+                                        <div class="node-title">Kubernetes</div>
+                                        <div class="node-subtitle">Orchestration</div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node" data-skill="helm">
+                                        <div class="node-icon">⛵</div>
+                                        <div class="node-title">Helm</div>
+                                        <div class="node-subtitle">Package Manager</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flow-section">
+                                <div class="section-title">Cloud & Infrastructure</div>
+                                <div class="flow-row">
+                                    <div class="flow-node" data-skill="aws">
+                                        <div class="node-icon">☁️</div>
+                                        <div class="node-title">AWS</div>
+                                        <div class="node-subtitle">Cloud Platform</div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node" data-skill="terraform">
+                                        <div class="node-icon">🏗️</div>
+                                        <div class="node-title">Terraform</div>
+                                        <div class="node-subtitle">Infrastructure as Code</div>
+                                    </div>
+                                    <div class="flow-arrow">→</div>
+                                    <div class="flow-node" data-skill="monitoring">
+                                        <div class="node-icon">📊</div>
+                                        <div class="node-title">Monitoring</div>
+                                        <div class="node-subtitle">Prometheus, Grafana</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -495,6 +648,7 @@
 
     <!-- Scripts -->
     <script src="modules/skilltree.js"></script>
+    <script src="modules/roadmap.js"></script>
     <script src="modules/resumegpt.js"></script>
     <script src="script.js"></script>
 </body>
