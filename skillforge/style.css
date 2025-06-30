@@ -268,6 +268,16 @@ body {
   margin-bottom: 2.5rem;
   line-height: 1.6;
   animation: fadeInUp 0.8s ease 0.6s both;
+  font-weight: 400;
+  max-width: 600px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  animation: fadeInUp 0.8s ease 0.6s both;
 }
 
 .hero-ctas {
@@ -827,6 +837,7 @@ body {
   .hero-subtitle {
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    line-height: 1.5;
   }
   
   .hero-ctas {
@@ -911,6 +922,14 @@ body {
     font-size: 0.9rem;
   }
   
+  .nav-tab {
+    color: var(--text-primary);
+  }
+  
+  .nav-tab.active {
+    color: var(--accent-primary);
+  }
+  
   .nav-tab span {
     display: none;
   }
@@ -943,6 +962,8 @@ body {
   
   .hero-subtitle {
     font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
   }
   
   .hero-badge {
