@@ -582,6 +582,18 @@ body {
   color: var(--text-muted);
 }
 
+.footer-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.made-in-india {
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+}
+
 .footer-bottom-links {
   display: flex;
   gap: 2rem;
