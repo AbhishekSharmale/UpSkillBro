@@ -8,8 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
     setupEventListeners();
     createParticles();
-    updateNavIndicator();
 });
+
+function updateNavIndicator() {
+    // Navigation indicator function
+}
 
 // Initialize Application
 function initializeApp() {
@@ -23,6 +26,12 @@ function initializeApp() {
     if (window.SkillTree) SkillTree.init();
     if (window.RoadmapModule) RoadmapModule.init();
     if (window.ResumeGPT) ResumeGPT.init();
+    
+    // Initialize new modules
+    setTimeout(() => {
+        initMentorModule();
+        initJobsModule();
+    }, 500);
     
     // Initialize career path selector
     initCareerSelector();
@@ -115,8 +124,11 @@ function switchModule(moduleName) {
             case 'skilltree':
                 if (window.SkillTree) SkillTree.refresh();
                 break;
-            case 'terminal':
-                if (window.TerminalGPT) TerminalGPT.focus();
+            case 'mentor':
+                initMentorModule();
+                break;
+            case 'jobs':
+                initJobsModule();
                 break;
             case 'resume':
                 if (window.ResumeGPT) ResumeGPT.focus();
@@ -215,11 +227,15 @@ function handleKeyboardShortcuts(e) {
                 break;
             case '2':
                 e.preventDefault();
-                switchModule('terminal');
+                switchModule('roadmap');
                 break;
             case '3':
                 e.preventDefault();
-                switchModule('resume');
+                switchModule('mentor');
+                break;
+            case '4':
+                e.preventDefault();
+                switchModule('jobs');
                 break;
         }
     }
@@ -649,6 +665,49 @@ function initRotatingTaglines() {
 window.addEventListener('resize', debounce(() => {
     // Handle responsive updates
 }, 250));
+
+// Mentor Module Functions
+function initMentorModule() {
+    const mentorBtns = document.querySelectorAll('.mentor-btn');
+    mentorBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const mentorCard = e.target.closest('.mentor-card');
+            const mentorName = mentorCard.querySelector('h3').textContent;
+            showNotification(`Connected with ${mentorName}!`, 'success');
+            e.target.textContent = 'Connected';
+            e.target.disabled = true;
+        });
+    });
+}
+
+// Jobs Module Functions
+function initJobsModule() {
+    const jobBtns = document.querySelectorAll('.job-btn');
+    jobBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const action = e.target.textContent;
+            const jobCard = e.target.closest('.job-card');
+            const jobTitle = jobCard.querySelector('h3').textContent;
+            
+            if (action === 'Save') {
+                showNotification(`${jobTitle} saved to favorites!`, 'info');
+                e.target.textContent = 'Saved';
+            } else if (action === 'Apply Now') {
+                showNotification(`Application submitted for ${jobTitle}!`, 'success');
+                e.target.textContent = 'Applied';
+                e.target.disabled = true;
+            }
+        });
+    });
+    
+    // Filter functionality
+    const filterSelects = document.querySelectorAll('.filter-select');
+    filterSelects.forEach(select => {
+        select.addEventListener('change', () => {
+            showNotification('Filters applied!', 'info');
+        });
+    });
+}
 
 // Export global functions
 window.UpskillBro = {
