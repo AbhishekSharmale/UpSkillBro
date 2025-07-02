@@ -88,6 +88,20 @@ body {
   filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.5));
 }
 
+.logo-icon:hover .planet {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.logo-icon:hover .orbit {
+  opacity: 0.6 !important;
+  stroke-width: 3;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
 .logo-text {
   font-family: var(--font-primary);
   font-size: 1.5rem;
