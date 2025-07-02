@@ -36,9 +36,9 @@
                     <span class="logo-text">UpskillBro</span>
                 </div>
                 <div class="nav-links">
-                    <a href="#roadmaps" class="nav-link">Roadmaps</a>
-                    <a href="#mentor" class="nav-link">Mentor</a>
-                    <a href="#jobs" class="nav-link">Job Alerts</a>
+                    <a href="#roadmaps" class="nav-link" onclick="switchToModule('roadmap')">Roadmaps</a>
+                    <a href="#mentor" class="nav-link" onclick="switchToModule('mentor')">Mentor</a>
+                    <a href="#jobs" class="nav-link" onclick="switchToModule('jobs')">Job Alerts</a>
                 </div>
                 <button class="cta-btn" id="getStarted">Get Started</button>
             </nav>
@@ -499,52 +499,77 @@
                         <p>Get personalized guidance for your career journey</p>
                     </div>
                     
-                    <div class="mentor-content">
-                        <div class="mentor-cards">
-                            <div class="mentor-card">
-                                <div class="mentor-avatar">
-                                    <div class="avatar-icon">👨‍💻</div>
-                                </div>
-                                <h3>Alex Chen</h3>
+                    <div class="mentor-grid">
+                        <div class="mentor-card">
+                            <div class="mentor-card-header">
+                                <div class="mentor-avatar">👨‍💻</div>
+                                <div class="mentor-status">Available</div>
+                            </div>
+                            <h3 class="mentor-name">Alex Chen</h3>
+                            <div class="mentor-meta">
                                 <p class="mentor-role">Senior Full Stack Developer</p>
                                 <p class="mentor-company">Google</p>
-                                <div class="mentor-skills">
-                                    <span class="skill-tag">React</span>
-                                    <span class="skill-tag">Node.js</span>
-                                    <span class="skill-tag">AWS</span>
-                                </div>
-                                <button class="mentor-btn">Connect</button>
                             </div>
-                            
-                            <div class="mentor-card">
-                                <div class="mentor-avatar">
-                                    <div class="avatar-icon">👩‍💼</div>
-                                </div>
-                                <h3>Sarah Johnson</h3>
+                            <div class="mentor-skills">
+                                <span class="skill-pill">React</span>
+                                <span class="skill-pill">Node.js</span>
+                                <span class="skill-pill">AWS</span>
+                            </div>
+                            <button class="btn-primary mentor-btn">Connect</button>
+                        </div>
+                        
+                        <div class="mentor-card">
+                            <div class="mentor-card-header">
+                                <div class="mentor-avatar">👩‍💼</div>
+                                <div class="mentor-status">Available</div>
+                            </div>
+                            <h3 class="mentor-name">Sarah Johnson</h3>
+                            <div class="mentor-meta">
                                 <p class="mentor-role">DevOps Engineer</p>
                                 <p class="mentor-company">Microsoft</p>
-                                <div class="mentor-skills">
-                                    <span class="skill-tag">Kubernetes</span>
-                                    <span class="skill-tag">Docker</span>
-                                    <span class="skill-tag">Azure</span>
-                                </div>
-                                <button class="mentor-btn">Connect</button>
                             </div>
-                            
-                            <div class="mentor-card">
-                                <div class="mentor-avatar">
-                                    <div class="avatar-icon">👨‍🔬</div>
-                                </div>
-                                <h3>David Kumar</h3>
+                            <div class="mentor-skills">
+                                <span class="skill-pill">Kubernetes</span>
+                                <span class="skill-pill">Docker</span>
+                                <span class="skill-pill">Azure</span>
+                            </div>
+                            <button class="btn-primary mentor-btn">Connect</button>
+                        </div>
+                        
+                        <div class="mentor-card">
+                            <div class="mentor-card-header">
+                                <div class="mentor-avatar">👨‍🔬</div>
+                                <div class="mentor-status">Available</div>
+                            </div>
+                            <h3 class="mentor-name">David Kumar</h3>
+                            <div class="mentor-meta">
                                 <p class="mentor-role">Mobile App Developer</p>
                                 <p class="mentor-company">Meta</p>
-                                <div class="mentor-skills">
-                                    <span class="skill-tag">React Native</span>
-                                    <span class="skill-tag">Flutter</span>
-                                    <span class="skill-tag">iOS</span>
-                                </div>
-                                <button class="mentor-btn">Connect</button>
                             </div>
+                            <div class="mentor-skills">
+                                <span class="skill-pill">React Native</span>
+                                <span class="skill-pill">Flutter</span>
+                                <span class="skill-pill">iOS</span>
+                            </div>
+                            <button class="btn-primary mentor-btn">Connect</button>
+                        </div>
+                        
+                        <div class="mentor-card">
+                            <div class="mentor-card-header">
+                                <div class="mentor-avatar">👩‍💻</div>
+                                <div class="mentor-status">Busy</div>
+                            </div>
+                            <h3 class="mentor-name">Lisa Wang</h3>
+                            <div class="mentor-meta">
+                                <p class="mentor-role">AI/ML Engineer</p>
+                                <p class="mentor-company">OpenAI</p>
+                            </div>
+                            <div class="mentor-skills">
+                                <span class="skill-pill">Python</span>
+                                <span class="skill-pill">TensorFlow</span>
+                                <span class="skill-pill">PyTorch</span>
+                            </div>
+                            <button class="btn-secondary mentor-btn" disabled>Unavailable</button>
                         </div>
                     </div>
                 </div>
@@ -558,86 +583,105 @@
                         <p>Latest opportunities matching your skills</p>
                     </div>
                     
-                    <div class="jobs-content">
-                        <div class="job-filters">
-                            <select class="filter-select">
-                                <option>All Roles</option>
-                                <option>Frontend Developer</option>
-                                <option>Backend Developer</option>
-                                <option>Full Stack Developer</option>
-                                <option>DevOps Engineer</option>
-                            </select>
-                            <select class="filter-select">
-                                <option>All Locations</option>
-                                <option>Remote</option>
-                                <option>San Francisco</option>
-                                <option>New York</option>
-                                <option>London</option>
-                            </select>
+                    <div class="job-filters">
+                        <select class="filter-select">
+                            <option>All Roles</option>
+                            <option>Frontend Developer</option>
+                            <option>Backend Developer</option>
+                            <option>Full Stack Developer</option>
+                            <option>DevOps Engineer</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>All Locations</option>
+                            <option>Remote</option>
+                            <option>San Francisco</option>
+                            <option>New York</option>
+                            <option>London</option>
+                        </select>
+                    </div>
+                    
+                    <div class="job-grid">
+                        <div class="job-card">
+                            <div class="job-card-header">
+                                <div class="company-logo">🚀</div>
+                                <div class="job-salary">$120k - $160k</div>
+                            </div>
+                            <h3 class="job-title">Senior Frontend Developer</h3>
+                            <div class="job-meta">
+                                <p class="company-name">TechCorp Inc.</p>
+                                <p class="job-location">San Francisco, CA (Remote)</p>
+                            </div>
+                            <div class="job-skills">
+                                <span class="skill-pill">React</span>
+                                <span class="skill-pill">TypeScript</span>
+                                <span class="skill-pill">Next.js</span>
+                            </div>
+                            <div class="job-actions">
+                                <button class="btn-secondary job-btn">Save</button>
+                                <button class="btn-primary job-btn">Apply Now</button>
+                            </div>
                         </div>
                         
-                        <div class="job-listings">
-                            <div class="job-card">
-                                <div class="job-header">
-                                    <div class="company-logo">🚀</div>
-                                    <div class="job-info">
-                                        <h3>Senior Frontend Developer</h3>
-                                        <p class="company-name">TechCorp Inc.</p>
-                                        <p class="job-location">San Francisco, CA (Remote)</p>
-                                    </div>
-                                    <div class="job-salary">$120k - $160k</div>
-                                </div>
-                                <div class="job-skills">
-                                    <span class="skill-tag">React</span>
-                                    <span class="skill-tag">TypeScript</span>
-                                    <span class="skill-tag">Next.js</span>
-                                </div>
-                                <div class="job-actions">
-                                    <button class="job-btn secondary">Save</button>
-                                    <button class="job-btn primary">Apply Now</button>
-                                </div>
+                        <div class="job-card">
+                            <div class="job-card-header">
+                                <div class="company-logo">⚡</div>
+                                <div class="job-salary">$110k - $140k</div>
                             </div>
-                            
-                            <div class="job-card">
-                                <div class="job-header">
-                                    <div class="company-logo">⚡</div>
-                                    <div class="job-info">
-                                        <h3>DevOps Engineer</h3>
-                                        <p class="company-name">CloudTech Solutions</p>
-                                        <p class="job-location">Austin, TX (Hybrid)</p>
-                                    </div>
-                                    <div class="job-salary">$110k - $140k</div>
-                                </div>
-                                <div class="job-skills">
-                                    <span class="skill-tag">AWS</span>
-                                    <span class="skill-tag">Kubernetes</span>
-                                    <span class="skill-tag">Terraform</span>
-                                </div>
-                                <div class="job-actions">
-                                    <button class="job-btn secondary">Save</button>
-                                    <button class="job-btn primary">Apply Now</button>
-                                </div>
+                            <h3 class="job-title">DevOps Engineer</h3>
+                            <div class="job-meta">
+                                <p class="company-name">CloudTech Solutions</p>
+                                <p class="job-location">Austin, TX (Hybrid)</p>
                             </div>
-                            
-                            <div class="job-card">
-                                <div class="job-header">
-                                    <div class="company-logo">🎯</div>
-                                    <div class="job-info">
-                                        <h3>Full Stack Developer</h3>
-                                        <p class="company-name">StartupXYZ</p>
-                                        <p class="job-location">New York, NY (Remote)</p>
-                                    </div>
-                                    <div class="job-salary">$90k - $130k</div>
-                                </div>
-                                <div class="job-skills">
-                                    <span class="skill-tag">Node.js</span>
-                                    <span class="skill-tag">React</span>
-                                    <span class="skill-tag">MongoDB</span>
-                                </div>
-                                <div class="job-actions">
-                                    <button class="job-btn secondary">Save</button>
-                                    <button class="job-btn primary">Apply Now</button>
-                                </div>
+                            <div class="job-skills">
+                                <span class="skill-pill">AWS</span>
+                                <span class="skill-pill">Kubernetes</span>
+                                <span class="skill-pill">Terraform</span>
+                            </div>
+                            <div class="job-actions">
+                                <button class="btn-secondary job-btn">Save</button>
+                                <button class="btn-primary job-btn">Apply Now</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-card-header">
+                                <div class="company-logo">🎯</div>
+                                <div class="job-salary">$90k - $130k</div>
+                            </div>
+                            <h3 class="job-title">Full Stack Developer</h3>
+                            <div class="job-meta">
+                                <p class="company-name">StartupXYZ</p>
+                                <p class="job-location">New York, NY (Remote)</p>
+                            </div>
+                            <div class="job-skills">
+                                <span class="skill-pill">Node.js</span>
+                                <span class="skill-pill">React</span>
+                                <span class="skill-pill">MongoDB</span>
+                            </div>
+                            <div class="job-actions">
+                                <button class="btn-secondary job-btn">Save</button>
+                                <button class="btn-primary job-btn">Apply Now</button>
+                            </div>
+                        </div>
+                        
+                        <div class="job-card">
+                            <div class="job-card-header">
+                                <div class="company-logo">💻</div>
+                                <div class="job-salary">$100k - $140k</div>
+                            </div>
+                            <h3 class="job-title">Backend Developer</h3>
+                            <div class="job-meta">
+                                <p class="company-name">DataFlow Inc.</p>
+                                <p class="job-location">Seattle, WA (Remote)</p>
+                            </div>
+                            <div class="job-skills">
+                                <span class="skill-pill">Python</span>
+                                <span class="skill-pill">Django</span>
+                                <span class="skill-pill">PostgreSQL</span>
+                            </div>
+                            <div class="job-actions">
+                                <button class="btn-secondary job-btn">Save</button>
+                                <button class="btn-primary job-btn">Apply Now</button>
                             </div>
                         </div>
                     </div>
@@ -840,20 +884,6 @@
                 </div>
             </div>
         </footer>
-    </div>
-
-    <!-- Search Modal -->
-    <div class="search-modal" id="searchModal">
-        <div class="search-container">
-            <div class="search-input">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search skills, commands, or resume tips...">
-                <button class="search-close" id="searchClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="search-results" id="searchResults"></div>
-        </div>
     </div>
 
     <!-- Loading Overlay -->

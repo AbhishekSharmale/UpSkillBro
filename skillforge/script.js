@@ -179,17 +179,7 @@ function toggleFocusMode() {
     showNotification(focusMode ? 'Focus Mode ON' : 'Focus Mode OFF');
 }
 
-// Search Functionality
-function openSearch() {
-    document.getElementById('searchModal').classList.add('active');
-    document.getElementById('searchInput').focus();
-}
 
-function closeSearch() {
-    document.getElementById('searchModal').classList.remove('active');
-    document.getElementById('searchInput').value = '';
-    document.getElementById('searchResults').innerHTML = '';
-}
 
 // Keyboard Shortcuts
 function handleKeyboardShortcuts(e) {
@@ -202,12 +192,7 @@ function handleKeyboardShortcuts(e) {
     }
     
     switch(e.key) {
-        case '/':
-            e.preventDefault();
-            openSearch();
-            break;
         case 'Escape':
-            closeSearch();
             closeModal();
             break;
         case 'f':
@@ -406,7 +391,7 @@ document.head.appendChild(notificationStyle);
 
 // Modal Management
 function closeModal() {
-    document.querySelectorAll('.skill-modal, .search-modal').forEach(modal => {
+    document.querySelectorAll('.skill-modal').forEach(modal => {
         modal.classList.remove('active');
     });
 }
@@ -709,9 +694,16 @@ function initJobsModule() {
     });
 }
 
+// Global function for nav links
+function switchToModule(moduleName) {
+    switchModule(moduleName);
+    document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+}
+
 // Export global functions
 window.UpskillBro = {
     switchModule,
+    switchToModule,
     showLoading,
     hideLoading,
     showNotification,
