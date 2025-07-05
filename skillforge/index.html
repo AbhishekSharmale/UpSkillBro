@@ -208,6 +208,36 @@
                         <p>Specialize in React ecosystem</p>
                         <button class="btn-start-path">Start Path</button>
                     </div>
+                    <div class="career-card" data-path="python">
+                        <div class="career-icon">🐍</div>
+                        <h3>Python Developer</h3>
+                        <p>Master Python for web and data</p>
+                        <button class="btn-start-path">Start Path</button>
+                    </div>
+                    <div class="career-card" data-path="java">
+                        <div class="career-icon">☕</div>
+                        <h3>Java Developer</h3>
+                        <p>Enterprise Java development</p>
+                        <button class="btn-start-path">Start Path</button>
+                    </div>
+                    <div class="career-card" data-path="golang">
+                        <div class="career-icon">🔷</div>
+                        <h3>Go Developer</h3>
+                        <p>Build scalable systems with Go</p>
+                        <button class="btn-start-path">Start Path</button>
+                    </div>
+                    <div class="career-card" data-path="blockchain">
+                        <div class="career-icon">⛓️</div>
+                        <h3>Blockchain Developer</h3>
+                        <p>Web3 and smart contracts</p>
+                        <button class="btn-start-path">Start Path</button>
+                    </div>
+                    <div class="career-card" data-path="ai-ml">
+                        <div class="career-icon">🤖</div>
+                        <h3>AI/ML Engineer</h3>
+                        <p>Machine learning and AI systems</p>
+                        <button class="btn-start-path">Start Path</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -328,6 +358,41 @@
                                         <div class="item-desc">Frontend + Backend</div>
                                     </div>
                                 </div>
+                                <div class="dropdown-item" data-value="python">
+                                    <div class="item-icon">🐍</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Python Developer</div>
+                                        <div class="item-desc">Web & Data Science</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="java">
+                                    <div class="item-icon">☕</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Java Developer</div>
+                                        <div class="item-desc">Enterprise Development</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="golang">
+                                    <div class="item-icon">🔷</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Go Developer</div>
+                                        <div class="item-desc">Scalable Systems</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="blockchain">
+                                    <div class="item-icon">⛓️</div>
+                                    <div class="item-content">
+                                        <div class="item-title">Blockchain Developer</div>
+                                        <div class="item-desc">Web3 & Smart Contracts</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item" data-value="ai-ml">
+                                    <div class="item-icon">🤖</div>
+                                    <div class="item-content">
+                                        <div class="item-title">AI/ML Engineer</div>
+                                        <div class="item-desc">Machine Learning & AI</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -426,6 +491,36 @@
                                         <div class="item-content">
                                             <div class="item-title">Full Stack Developer</div>
                                             <div class="item-desc">Frontend + Backend</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item" data-value="python">
+                                        <div class="item-content">
+                                            <div class="item-title">Python Developer</div>
+                                            <div class="item-desc">Web & Data Science</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item" data-value="java">
+                                        <div class="item-content">
+                                            <div class="item-title">Java Developer</div>
+                                            <div class="item-desc">Enterprise Development</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item" data-value="golang">
+                                        <div class="item-content">
+                                            <div class="item-title">Go Developer</div>
+                                            <div class="item-desc">Scalable Systems</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item" data-value="blockchain">
+                                        <div class="item-content">
+                                            <div class="item-title">Blockchain Developer</div>
+                                            <div class="item-desc">Web3 & Smart Contracts</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item" data-value="ai-ml">
+                                        <div class="item-content">
+                                            <div class="item-title">AI/ML Engineer</div>
+                                            <div class="item-desc">Machine Learning & AI</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1011,6 +1106,15 @@
         </footer>
     </div>
 
+    <!-- Roadmap Modal -->
+    <div class="roadmap-modal" id="roadmapModal" style="display: none;">
+        <div class="roadmap-modal-content">
+            <div id="roadmapViewerContent">
+                <!-- Roadmap content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner">
@@ -1027,6 +1131,7 @@
     <script src="modules/resumegpt.js"></script>
     <script src="modules/technews.js"></script>
     <script src="modules/techblogs.js"></script>
+    <script src="modules/roadmap-viewer.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

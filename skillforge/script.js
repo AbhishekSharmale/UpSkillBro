@@ -31,6 +31,7 @@ function initializeApp() {
     if (window.ResumeGPT) ResumeGPT.init();
     if (window.TechNews) TechNews.init();
     if (window.TechBlogs) TechBlogs.init();
+    if (window.RoadmapViewer) RoadmapViewer.init();
     
     // Handle browser back/forward
     window.addEventListener('popstate', (e) => {
@@ -544,7 +545,11 @@ function initCareerSelector() {
         card.addEventListener('click', (e) => {
             if (!e.target.classList.contains('btn-start-path')) {
                 const path = card.dataset.path;
-                showRoadmap(path);
+                if (window.RoadmapViewer) {
+                    window.RoadmapViewer.showRoadmap(path);
+                } else {
+                    showRoadmap(path);
+                }
             }
         });
     });

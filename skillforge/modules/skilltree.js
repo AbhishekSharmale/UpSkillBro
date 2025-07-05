@@ -64,6 +64,131 @@ window.SkillTree = {
                         { id: "nodejs-fs", name: "Node.js", type: "language", resources: ["#"] }
                     ]
                 }]
+            },
+            python: {
+                title: "Python Developer",
+                description: "Master Python for web and data science",
+                levels: [{
+                    level: 1,
+                    title: "Python Fundamentals",
+                    skills: [
+                        { id: "python-basics", name: "Python Syntax", type: "language", resources: ["#"] },
+                        { id: "django", name: "Django", type: "framework", resources: ["#"] }
+                    ]
+                }]
+            },
+            java: {
+                title: "Java Developer",
+                description: "Enterprise Java development",
+                levels: [{
+                    level: 1,
+                    title: "Java Fundamentals",
+                    skills: [
+                        { id: "java-basics", name: "Java OOP", type: "language", resources: ["#"] },
+                        { id: "spring-boot", name: "Spring Boot", type: "framework", resources: ["#"] }
+                    ]
+                }]
+            },
+            golang: {
+                title: "Go Developer",
+                description: "Build scalable systems with Go",
+                levels: [{
+                    level: 1,
+                    title: "Go Fundamentals",
+                    skills: [
+                        { id: "go-syntax", name: "Go Syntax", type: "language", resources: ["#"] },
+                        { id: "gin", name: "Gin Framework", type: "framework", resources: ["#"] }
+                    ]
+                }]
+            },
+            blockchain: {
+                title: "Blockchain Developer",
+                description: "Web3 and smart contract development",
+                levels: [{
+                    level: 1,
+                    title: "Blockchain Basics",
+                    skills: [
+                        { id: "solidity", name: "Solidity", type: "language", resources: ["#"] },
+                        { id: "web3js", name: "Web3.js", type: "tool", resources: ["#"] }
+                    ]
+                }]
+            },
+            "ai-ml": {
+                title: "AI/ML Engineer",
+                description: "Machine learning and AI systems",
+                levels: [{
+                    level: 1,
+                    title: "ML Fundamentals",
+                    skills: [
+                        { id: "python-ml", name: "Python for ML", type: "language", resources: ["#"] },
+                        { id: "tensorflow", name: "TensorFlow", type: "framework", resources: ["#"] }
+                    ]
+                }]
+            },
+            python: {
+                title: "Python Developer",
+                description: "Master Python for web and data science",
+                levels: [{
+                    level: 1,
+                    title: "Python Fundamentals",
+                    skills: [
+                        { id: "python-basics", name: "Python Syntax", type: "language", resources: ["#"] },
+                        { id: "django", name: "Django", type: "framework", resources: ["#"] },
+                        { id: "fastapi", name: "FastAPI", type: "framework", resources: ["#"] }
+                    ]
+                }]
+            },
+            java: {
+                title: "Java Developer",
+                description: "Enterprise Java development",
+                levels: [{
+                    level: 1,
+                    title: "Java Fundamentals",
+                    skills: [
+                        { id: "java-basics", name: "Java OOP", type: "language", resources: ["#"] },
+                        { id: "spring-boot", name: "Spring Boot", type: "framework", resources: ["#"] },
+                        { id: "hibernate", name: "Hibernate", type: "tool", resources: ["#"] }
+                    ]
+                }]
+            },
+            golang: {
+                title: "Go Developer",
+                description: "Build scalable systems with Go",
+                levels: [{
+                    level: 1,
+                    title: "Go Fundamentals",
+                    skills: [
+                        { id: "go-syntax", name: "Go Syntax", type: "language", resources: ["#"] },
+                        { id: "goroutines", name: "Goroutines", type: "concept", resources: ["#"] },
+                        { id: "gin", name: "Gin Framework", type: "framework", resources: ["#"] }
+                    ]
+                }]
+            },
+            blockchain: {
+                title: "Blockchain Developer",
+                description: "Web3 and smart contract development",
+                levels: [{
+                    level: 1,
+                    title: "Blockchain Basics",
+                    skills: [
+                        { id: "solidity", name: "Solidity", type: "language", resources: ["#"] },
+                        { id: "web3js", name: "Web3.js", type: "tool", resources: ["#"] },
+                        { id: "smart-contracts", name: "Smart Contracts", type: "concept", resources: ["#"] }
+                    ]
+                }]
+            },
+            "ai-ml": {
+                title: "AI/ML Engineer",
+                description: "Machine learning and AI systems",
+                levels: [{
+                    level: 1,
+                    title: "ML Fundamentals",
+                    skills: [
+                        { id: "python-ml", name: "Python for ML", type: "language", resources: ["#"] },
+                        { id: "scikit-learn", name: "Scikit-learn", type: "tool", resources: ["#"] },
+                        { id: "tensorflow", name: "TensorFlow", type: "framework", resources: ["#"] }
+                    ]
+                }]
             }
         };
     },

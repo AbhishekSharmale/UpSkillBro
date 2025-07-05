@@ -1,0 +1,522 @@
+{
+  "frontend": {
+    "title": "Frontend Developer",
+    "description": "Master modern frontend development",
+    "duration": "12-16 weeks",
+    "difficulty": "Beginner to Advanced",
+    "sections": [
+      {
+        "title": "Web Fundamentals",
+        "items": [
+          { "name": "HTML5 & Semantic Markup", "type": "essential", "resources": ["MDN HTML Guide", "HTML5 Specification"] },
+          { "name": "CSS3 & Modern Layouts", "type": "essential", "resources": ["CSS Grid Guide", "Flexbox Guide"] },
+          { "name": "JavaScript ES6+", "type": "essential", "resources": ["JavaScript.info", "ES6 Features"] },
+          { "name": "DOM Manipulation", "type": "essential", "resources": ["DOM API Reference"] },
+          { "name": "Browser APIs", "type": "important", "resources": ["Web APIs Guide"] }
+        ]
+      },
+      {
+        "title": "CSS Frameworks & Preprocessors",
+        "items": [
+          { "name": "Tailwind CSS", "type": "recommended", "resources": ["Tailwind Docs"] },
+          { "name": "Sass/SCSS", "type": "important", "resources": ["Sass Guide"] },
+          { "name": "CSS-in-JS", "type": "optional", "resources": ["Styled Components"] }
+        ]
+      },
+      {
+        "title": "JavaScript Frameworks",
+        "items": [
+          { "name": "React", "type": "essential", "resources": ["React Docs", "React Tutorial"] },
+          { "name": "Vue.js", "type": "alternative", "resources": ["Vue Guide"] },
+          { "name": "Angular", "type": "alternative", "resources": ["Angular Docs"] },
+          { "name": "Svelte", "type": "emerging", "resources": ["Svelte Tutorial"] }
+        ]
+      },
+      {
+        "title": "State Management",
+        "items": [
+          { "name": "Redux Toolkit", "type": "important", "resources": ["Redux Toolkit Docs"] },
+          { "name": "Zustand", "type": "recommended", "resources": ["Zustand Guide"] },
+          { "name": "Context API", "type": "essential", "resources": ["React Context"] }
+        ]
+      },
+      {
+        "title": "Build Tools & Development",
+        "items": [
+          { "name": "Vite", "type": "recommended", "resources": ["Vite Guide"] },
+          { "name": "Webpack", "type": "important", "resources": ["Webpack Docs"] },
+          { "name": "ESLint & Prettier", "type": "essential", "resources": ["ESLint Guide"] },
+          { "name": "TypeScript", "type": "important", "resources": ["TypeScript Handbook"] }
+        ]
+      },
+      {
+        "title": "Testing",
+        "items": [
+          { "name": "Jest", "type": "essential", "resources": ["Jest Docs"] },
+          { "name": "React Testing Library", "type": "essential", "resources": ["Testing Library"] },
+          { "name": "Cypress", "type": "important", "resources": ["Cypress Docs"] },
+          { "name": "Playwright", "type": "emerging", "resources": ["Playwright Guide"] }
+        ]
+      },
+      {
+        "title": "Performance & Optimization",
+        "items": [
+          { "name": "Web Vitals", "type": "essential", "resources": ["Core Web Vitals"] },
+          { "name": "Lazy Loading", "type": "important", "resources": ["Lazy Loading Guide"] },
+          { "name": "Code Splitting", "type": "important", "resources": ["Code Splitting"] },
+          { "name": "PWA", "type": "recommended", "resources": ["PWA Guide"] }
+        ]
+      }
+    ]
+  },
+  "backend": {
+    "title": "Backend Developer",
+    "description": "Build robust server-side applications",
+    "duration": "14-18 weeks",
+    "difficulty": "Intermediate to Advanced",
+    "sections": [
+      {
+        "title": "Programming Languages",
+        "items": [
+          { "name": "Node.js", "type": "recommended", "resources": ["Node.js Docs"] },
+          { "name": "Python", "type": "recommended", "resources": ["Python Guide"] },
+          { "name": "Java", "type": "alternative", "resources": ["Java Tutorial"] },
+          { "name": "Go", "type": "emerging", "resources": ["Go Tour"] },
+          { "name": "Rust", "type": "emerging", "resources": ["Rust Book"] }
+        ]
+      },
+      {
+        "title": "Web Frameworks",
+        "items": [
+          { "name": "Express.js", "type": "essential", "resources": ["Express Guide"] },
+          { "name": "Fastify", "type": "recommended", "resources": ["Fastify Docs"] },
+          { "name": "Django", "type": "alternative", "resources": ["Django Tutorial"] },
+          { "name": "FastAPI", "type": "recommended", "resources": ["FastAPI Docs"] },
+          { "name": "Spring Boot", "type": "alternative", "resources": ["Spring Guide"] }
+        ]
+      },
+      {
+        "title": "Databases",
+        "items": [
+          { "name": "PostgreSQL", "type": "essential", "resources": ["PostgreSQL Tutorial"] },
+          { "name": "MongoDB", "type": "important", "resources": ["MongoDB University"] },
+          { "name": "Redis", "type": "important", "resources": ["Redis Tutorial"] },
+          { "name": "MySQL", "type": "alternative", "resources": ["MySQL Guide"] }
+        ]
+      },
+      {
+        "title": "API Development",
+        "items": [
+          { "name": "RESTful APIs", "type": "essential", "resources": ["REST API Guide"] },
+          { "name": "GraphQL", "type": "important", "resources": ["GraphQL Tutorial"] },
+          { "name": "API Documentation", "type": "essential", "resources": ["OpenAPI Spec"] },
+          { "name": "API Security", "type": "essential", "resources": ["API Security Guide"] }
+        ]
+      },
+      {
+        "title": "Authentication & Security",
+        "items": [
+          { "name": "JWT", "type": "essential", "resources": ["JWT Guide"] },
+          { "name": "OAuth 2.0", "type": "important", "resources": ["OAuth Tutorial"] },
+          { "name": "HTTPS & SSL", "type": "essential", "resources": ["SSL Guide"] },
+          { "name": "Rate Limiting", "type": "important", "resources": ["Rate Limiting"] }
+        ]
+      },
+      {
+        "title": "DevOps & Deployment",
+        "items": [
+          { "name": "Docker", "type": "essential", "resources": ["Docker Tutorial"] },
+          { "name": "CI/CD", "type": "important", "resources": ["GitHub Actions"] },
+          { "name": "AWS/Cloud", "type": "important", "resources": ["AWS Fundamentals"] },
+          { "name": "Monitoring", "type": "important", "resources": ["Application Monitoring"] }
+        ]
+      }
+    ]
+  },
+  "devops": {
+    "title": "DevOps Engineer",
+    "description": "Automate and scale infrastructure",
+    "duration": "16-20 weeks",
+    "difficulty": "Intermediate to Expert",
+    "sections": [
+      {
+        "title": "Operating Systems",
+        "items": [
+          { "name": "Linux Administration", "type": "essential", "resources": ["Linux Command Line"] },
+          { "name": "Shell Scripting", "type": "essential", "resources": ["Bash Scripting Guide"] },
+          { "name": "System Monitoring", "type": "important", "resources": ["System Monitoring Tools"] },
+          { "name": "Networking", "type": "essential", "resources": ["Networking Fundamentals"] }
+        ]
+      },
+      {
+        "title": "Containerization",
+        "items": [
+          { "name": "Docker", "type": "essential", "resources": ["Docker Mastery"] },
+          { "name": "Docker Compose", "type": "essential", "resources": ["Docker Compose Guide"] },
+          { "name": "Container Security", "type": "important", "resources": ["Container Security"] }
+        ]
+      },
+      {
+        "title": "Orchestration",
+        "items": [
+          { "name": "Kubernetes", "type": "essential", "resources": ["Kubernetes Tutorial"] },
+          { "name": "Helm", "type": "important", "resources": ["Helm Guide"] },
+          { "name": "Service Mesh", "type": "advanced", "resources": ["Istio Tutorial"] }
+        ]
+      },
+      {
+        "title": "Infrastructure as Code",
+        "items": [
+          { "name": "Terraform", "type": "essential", "resources": ["Terraform Tutorial"] },
+          { "name": "Ansible", "type": "important", "resources": ["Ansible Guide"] },
+          { "name": "CloudFormation", "type": "alternative", "resources": ["CloudFormation Docs"] }
+        ]
+      },
+      {
+        "title": "CI/CD",
+        "items": [
+          { "name": "Jenkins", "type": "important", "resources": ["Jenkins Tutorial"] },
+          { "name": "GitHub Actions", "type": "recommended", "resources": ["GitHub Actions Guide"] },
+          { "name": "GitLab CI", "type": "alternative", "resources": ["GitLab CI Docs"] },
+          { "name": "ArgoCD", "type": "advanced", "resources": ["ArgoCD Tutorial"] }
+        ]
+      },
+      {
+        "title": "Cloud Platforms",
+        "items": [
+          { "name": "AWS", "type": "recommended", "resources": ["AWS Solutions Architect"] },
+          { "name": "Azure", "type": "alternative", "resources": ["Azure Fundamentals"] },
+          { "name": "Google Cloud", "type": "alternative", "resources": ["GCP Associate"] }
+        ]
+      },
+      {
+        "title": "Monitoring & Observability",
+        "items": [
+          { "name": "Prometheus", "type": "essential", "resources": ["Prometheus Guide"] },
+          { "name": "Grafana", "type": "essential", "resources": ["Grafana Tutorial"] },
+          { "name": "ELK Stack", "type": "important", "resources": ["Elasticsearch Guide"] },
+          { "name": "Jaeger", "type": "advanced", "resources": ["Distributed Tracing"] }
+        ]
+      }
+    ]
+  },
+  "fullstack": {
+    "title": "Full Stack Developer",
+    "description": "Master both frontend and backend",
+    "duration": "20-24 weeks",
+    "difficulty": "Intermediate to Advanced",
+    "sections": [
+      {
+        "title": "Frontend Essentials",
+        "items": [
+          { "name": "React/Vue/Angular", "type": "essential", "resources": ["Framework Docs"] },
+          { "name": "TypeScript", "type": "important", "resources": ["TypeScript Guide"] },
+          { "name": "State Management", "type": "important", "resources": ["State Management"] },
+          { "name": "CSS Framework", "type": "recommended", "resources": ["Tailwind CSS"] }
+        ]
+      },
+      {
+        "title": "Backend Essentials",
+        "items": [
+          { "name": "Node.js/Python", "type": "essential", "resources": ["Backend Language"] },
+          { "name": "Express/FastAPI", "type": "essential", "resources": ["Web Framework"] },
+          { "name": "Database Design", "type": "essential", "resources": ["Database Tutorial"] },
+          { "name": "API Development", "type": "essential", "resources": ["REST/GraphQL"] }
+        ]
+      },
+      {
+        "title": "Database Management",
+        "items": [
+          { "name": "SQL Databases", "type": "essential", "resources": ["PostgreSQL"] },
+          { "name": "NoSQL Databases", "type": "important", "resources": ["MongoDB"] },
+          { "name": "Database Optimization", "type": "important", "resources": ["Query Optimization"] },
+          { "name": "Caching", "type": "important", "resources": ["Redis Guide"] }
+        ]
+      },
+      {
+        "title": "DevOps & Deployment",
+        "items": [
+          { "name": "Docker", "type": "essential", "resources": ["Docker Tutorial"] },
+          { "name": "CI/CD", "type": "important", "resources": ["GitHub Actions"] },
+          { "name": "Cloud Deployment", "type": "important", "resources": ["AWS/Vercel"] },
+          { "name": "Monitoring", "type": "recommended", "resources": ["Application Monitoring"] }
+        ]
+      },
+      {
+        "title": "Testing & Quality",
+        "items": [
+          { "name": "Unit Testing", "type": "essential", "resources": ["Jest/PyTest"] },
+          { "name": "Integration Testing", "type": "important", "resources": ["Testing Guide"] },
+          { "name": "E2E Testing", "type": "important", "resources": ["Cypress/Playwright"] },
+          { "name": "Code Quality", "type": "essential", "resources": ["ESLint/Prettier"] }
+        ]
+      }
+    ]
+  },
+  "python": {
+    "title": "Python Developer",
+    "description": "Master Python for web and data",
+    "duration": "12-16 weeks",
+    "difficulty": "Beginner to Advanced",
+    "sections": [
+      {
+        "title": "Python Fundamentals",
+        "items": [
+          { "name": "Python Syntax", "type": "essential", "resources": ["Python Tutorial"] },
+          { "name": "Data Structures", "type": "essential", "resources": ["Python Data Structures"] },
+          { "name": "OOP in Python", "type": "essential", "resources": ["Python OOP"] },
+          { "name": "Error Handling", "type": "essential", "resources": ["Exception Handling"] }
+        ]
+      },
+      {
+        "title": "Web Development",
+        "items": [
+          { "name": "Django", "type": "recommended", "resources": ["Django Tutorial"] },
+          { "name": "FastAPI", "type": "recommended", "resources": ["FastAPI Guide"] },
+          { "name": "Flask", "type": "alternative", "resources": ["Flask Tutorial"] },
+          { "name": "REST APIs", "type": "essential", "resources": ["DRF Guide"] }
+        ]
+      },
+      {
+        "title": "Data Science & ML",
+        "items": [
+          { "name": "NumPy", "type": "important", "resources": ["NumPy Tutorial"] },
+          { "name": "Pandas", "type": "important", "resources": ["Pandas Guide"] },
+          { "name": "Matplotlib/Seaborn", "type": "important", "resources": ["Data Visualization"] },
+          { "name": "Scikit-learn", "type": "recommended", "resources": ["ML with Python"] }
+        ]
+      },
+      {
+        "title": "Database & ORM",
+        "items": [
+          { "name": "SQLAlchemy", "type": "essential", "resources": ["SQLAlchemy Tutorial"] },
+          { "name": "PostgreSQL", "type": "recommended", "resources": ["PostgreSQL with Python"] },
+          { "name": "MongoDB", "type": "alternative", "resources": ["PyMongo Guide"] }
+        ]
+      },
+      {
+        "title": "Testing & Deployment",
+        "items": [
+          { "name": "PyTest", "type": "essential", "resources": ["PyTest Guide"] },
+          { "name": "Docker", "type": "important", "resources": ["Python Docker"] },
+          { "name": "AWS/Heroku", "type": "important", "resources": ["Python Deployment"] }
+        ]
+      }
+    ]
+  },
+  "java": {
+    "title": "Java Developer",
+    "description": "Enterprise Java development",
+    "duration": "16-20 weeks",
+    "difficulty": "Intermediate to Advanced",
+    "sections": [
+      {
+        "title": "Java Fundamentals",
+        "items": [
+          { "name": "Java Syntax & OOP", "type": "essential", "resources": ["Java Tutorial"] },
+          { "name": "Collections Framework", "type": "essential", "resources": ["Java Collections"] },
+          { "name": "Exception Handling", "type": "essential", "resources": ["Java Exceptions"] },
+          { "name": "Multithreading", "type": "important", "resources": ["Java Concurrency"] }
+        ]
+      },
+      {
+        "title": "Spring Framework",
+        "items": [
+          { "name": "Spring Boot", "type": "essential", "resources": ["Spring Boot Guide"] },
+          { "name": "Spring MVC", "type": "essential", "resources": ["Spring MVC"] },
+          { "name": "Spring Data JPA", "type": "essential", "resources": ["Spring Data"] },
+          { "name": "Spring Security", "type": "important", "resources": ["Spring Security"] }
+        ]
+      },
+      {
+        "title": "Database & Persistence",
+        "items": [
+          { "name": "JPA/Hibernate", "type": "essential", "resources": ["Hibernate Tutorial"] },
+          { "name": "MySQL/PostgreSQL", "type": "essential", "resources": ["Database with Java"] },
+          { "name": "Connection Pooling", "type": "important", "resources": ["HikariCP"] }
+        ]
+      },
+      {
+        "title": "Build Tools & Testing",
+        "items": [
+          { "name": "Maven", "type": "essential", "resources": ["Maven Guide"] },
+          { "name": "Gradle", "type": "alternative", "resources": ["Gradle Tutorial"] },
+          { "name": "JUnit", "type": "essential", "resources": ["JUnit Testing"] },
+          { "name": "Mockito", "type": "important", "resources": ["Mockito Guide"] }
+        ]
+      },
+      {
+        "title": "Enterprise & Deployment",
+        "items": [
+          { "name": "Microservices", "type": "important", "resources": ["Spring Cloud"] },
+          { "name": "Docker", "type": "important", "resources": ["Java Docker"] },
+          { "name": "Kubernetes", "type": "advanced", "resources": ["Java on K8s"] }
+        ]
+      }
+    ]
+  },
+  "golang": {
+    "title": "Go Developer",
+    "description": "Build scalable systems with Go",
+    "duration": "10-14 weeks",
+    "difficulty": "Intermediate",
+    "sections": [
+      {
+        "title": "Go Fundamentals",
+        "items": [
+          { "name": "Go Syntax", "type": "essential", "resources": ["Go Tour"] },
+          { "name": "Goroutines & Channels", "type": "essential", "resources": ["Go Concurrency"] },
+          { "name": "Interfaces", "type": "essential", "resources": ["Go Interfaces"] },
+          { "name": "Error Handling", "type": "essential", "resources": ["Go Error Handling"] }
+        ]
+      },
+      {
+        "title": "Web Development",
+        "items": [
+          { "name": "Gin Framework", "type": "recommended", "resources": ["Gin Guide"] },
+          { "name": "Echo Framework", "type": "alternative", "resources": ["Echo Tutorial"] },
+          { "name": "Standard Library", "type": "important", "resources": ["Go HTTP"] },
+          { "name": "REST APIs", "type": "essential", "resources": ["Go REST API"] }
+        ]
+      },
+      {
+        "title": "Database & Storage",
+        "items": [
+          { "name": "GORM", "type": "recommended", "resources": ["GORM Guide"] },
+          { "name": "PostgreSQL Driver", "type": "essential", "resources": ["Go PostgreSQL"] },
+          { "name": "Redis", "type": "important", "resources": ["Go Redis"] }
+        ]
+      },
+      {
+        "title": "Testing & Tools",
+        "items": [
+          { "name": "Go Testing", "type": "essential", "resources": ["Go Test"] },
+          { "name": "Go Modules", "type": "essential", "resources": ["Go Modules"] },
+          { "name": "Docker", "type": "important", "resources": ["Go Docker"] }
+        ]
+      },
+      {
+        "title": "Advanced Topics",
+        "items": [
+          { "name": "Microservices", "type": "important", "resources": ["Go Microservices"] },
+          { "name": "gRPC", "type": "advanced", "resources": ["Go gRPC"] },
+          { "name": "Performance", "type": "advanced", "resources": ["Go Performance"] }
+        ]
+      }
+    ]
+  },
+  "blockchain": {
+    "title": "Blockchain Developer",
+    "description": "Web3 and smart contracts",
+    "duration": "14-18 weeks",
+    "difficulty": "Advanced",
+    "sections": [
+      {
+        "title": "Blockchain Fundamentals",
+        "items": [
+          { "name": "Blockchain Concepts", "type": "essential", "resources": ["Blockchain Basics"] },
+          { "name": "Cryptography", "type": "essential", "resources": ["Crypto Fundamentals"] },
+          { "name": "Consensus Mechanisms", "type": "essential", "resources": ["Consensus Algorithms"] },
+          { "name": "Bitcoin & Ethereum", "type": "essential", "resources": ["Ethereum Whitepaper"] }
+        ]
+      },
+      {
+        "title": "Smart Contract Development",
+        "items": [
+          { "name": "Solidity", "type": "essential", "resources": ["Solidity Docs"] },
+          { "name": "Remix IDE", "type": "essential", "resources": ["Remix Tutorial"] },
+          { "name": "Hardhat", "type": "important", "resources": ["Hardhat Guide"] },
+          { "name": "Truffle", "type": "alternative", "resources": ["Truffle Suite"] }
+        ]
+      },
+      {
+        "title": "Web3 Development",
+        "items": [
+          { "name": "Web3.js", "type": "important", "resources": ["Web3.js Guide"] },
+          { "name": "Ethers.js", "type": "recommended", "resources": ["Ethers.js Docs"] },
+          { "name": "MetaMask Integration", "type": "essential", "resources": ["MetaMask Guide"] },
+          { "name": "IPFS", "type": "important", "resources": ["IPFS Tutorial"] }
+        ]
+      },
+      {
+        "title": "DeFi & NFTs",
+        "items": [
+          { "name": "ERC Standards", "type": "essential", "resources": ["ERC-20/721/1155"] },
+          { "name": "DeFi Protocols", "type": "important", "resources": ["DeFi Guide"] },
+          { "name": "NFT Development", "type": "important", "resources": ["NFT Tutorial"] },
+          { "name": "OpenZeppelin", "type": "essential", "resources": ["OpenZeppelin Contracts"] }
+        ]
+      },
+      {
+        "title": "Testing & Security",
+        "items": [
+          { "name": "Smart Contract Testing", "type": "essential", "resources": ["Contract Testing"] },
+          { "name": "Security Best Practices", "type": "essential", "resources": ["Smart Contract Security"] },
+          { "name": "Audit Tools", "type": "important", "resources": ["Security Tools"] }
+        ]
+      }
+    ]
+  },
+  "ai-ml": {
+    "title": "AI/ML Engineer",
+    "description": "Machine learning and AI systems",
+    "duration": "18-24 weeks",
+    "difficulty": "Advanced",
+    "sections": [
+      {
+        "title": "Mathematics & Statistics",
+        "items": [
+          { "name": "Linear Algebra", "type": "essential", "resources": ["Khan Academy"] },
+          { "name": "Statistics", "type": "essential", "resources": ["Statistics Course"] },
+          { "name": "Calculus", "type": "important", "resources": ["Calculus Tutorial"] },
+          { "name": "Probability", "type": "essential", "resources": ["Probability Guide"] }
+        ]
+      },
+      {
+        "title": "Python for ML",
+        "items": [
+          { "name": "NumPy", "type": "essential", "resources": ["NumPy Tutorial"] },
+          { "name": "Pandas", "type": "essential", "resources": ["Pandas Guide"] },
+          { "name": "Matplotlib/Seaborn", "type": "essential", "resources": ["Data Visualization"] },
+          { "name": "Jupyter Notebooks", "type": "essential", "resources": ["Jupyter Guide"] }
+        ]
+      },
+      {
+        "title": "Machine Learning",
+        "items": [
+          { "name": "Scikit-learn", "type": "essential", "resources": ["Scikit-learn Tutorial"] },
+          { "name": "Supervised Learning", "type": "essential", "resources": ["ML Algorithms"] },
+          { "name": "Unsupervised Learning", "type": "essential", "resources": ["Clustering Guide"] },
+          { "name": "Model Evaluation", "type": "essential", "resources": ["Model Validation"] }
+        ]
+      },
+      {
+        "title": "Deep Learning",
+        "items": [
+          { "name": "TensorFlow", "type": "recommended", "resources": ["TensorFlow Tutorial"] },
+          { "name": "PyTorch", "type": "recommended", "resources": ["PyTorch Tutorial"] },
+          { "name": "Neural Networks", "type": "essential", "resources": ["Deep Learning Course"] },
+          { "name": "CNN & RNN", "type": "important", "resources": ["Neural Network Types"] }
+        ]
+      },
+      {
+        "title": "MLOps & Deployment",
+        "items": [
+          { "name": "MLflow", "type": "important", "resources": ["MLflow Guide"] },
+          { "name": "Docker for ML", "type": "important", "resources": ["ML Docker"] },
+          { "name": "Model Serving", "type": "important", "resources": ["Model Deployment"] },
+          { "name": "Monitoring", "type": "important", "resources": ["ML Monitoring"] }
+        ]
+      },
+      {
+        "title": "Specialized Areas",
+        "items": [
+          { "name": "NLP", "type": "optional", "resources": ["NLP Tutorial"] },
+          { "name": "Computer Vision", "type": "optional", "resources": ["CV Guide"] },
+          { "name": "Reinforcement Learning", "type": "advanced", "resources": ["RL Course"] },
+          { "name": "LLMs", "type": "emerging", "resources": ["LLM Guide"] }
+        ]
+      }
+    ]
+  }
+}
