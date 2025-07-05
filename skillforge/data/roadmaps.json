@@ -376,5 +376,83 @@
         ]
       }
     ]
+  },
+  "fullstack": {
+    "title": "Full Stack Developer",
+    "description": "Master both frontend and backend development",
+    "levels": [
+      {
+        "level": 1,
+        "title": "Frontend Basics",
+        "skills": [
+          {
+            "id": "html-css-fullstack",
+            "name": "HTML & CSS",
+            "type": "skill",
+            "resources": ["https://developer.mozilla.org/en-US/docs/Learn/HTML"]
+          },
+          {
+            "id": "javascript-fullstack",
+            "name": "JavaScript",
+            "type": "skill",
+            "resources": ["https://javascript.info/"]
+          },
+          {
+            "id": "react-fullstack",
+            "name": "React",
+            "type": "framework",
+            "resources": ["https://react.dev/"]
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "title": "Backend Basics",
+        "skills": [
+          {
+            "id": "nodejs-fullstack",
+            "name": "Node.js",
+            "type": "language",
+            "resources": ["https://nodejs.org/en/docs/"]
+          },
+          {
+            "id": "express-fullstack",
+            "name": "Express.js",
+            "type": "framework",
+            "resources": ["https://expressjs.com/"]
+          },
+          {
+            "id": "database-fullstack",
+            "name": "Database (MongoDB/PostgreSQL)",
+            "type": "database",
+            "resources": ["https://docs.mongodb.com/"]
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "title": "Full Stack Integration",
+        "skills": [
+          {
+            "id": "api-design-fullstack",
+            "name": "API Design",
+            "type": "concept",
+            "resources": ["https://restfulapi.net/"]
+          },
+          {
+            "id": "auth-fullstack",
+            "name": "Authentication",
+            "type": "concept",
+            "resources": ["https://auth0.com/docs"]
+          },
+          {
+            "id": "deployment-fullstack",
+            "name": "Deployment",
+            "type": "skill",
+            "resources": ["https://vercel.com/docs"]
+          }
+        ]
+      }
+    ]
   }
 }

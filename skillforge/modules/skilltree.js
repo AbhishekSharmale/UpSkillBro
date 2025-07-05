@@ -52,6 +52,18 @@ window.SkillTree = {
                         { id: "docker-basics", name: "Docker", type: "tool", resources: ["#"] }
                     ]
                 }]
+            },
+            fullstack: {
+                title: "Full Stack Developer",
+                description: "Master both frontend and backend development",
+                levels: [{
+                    level: 1,
+                    title: "Full Stack Basics",
+                    skills: [
+                        { id: "react-fs", name: "React", type: "framework", resources: ["#"] },
+                        { id: "nodejs-fs", name: "Node.js", type: "language", resources: ["#"] }
+                    ]
+                }]
             }
         };
     },
