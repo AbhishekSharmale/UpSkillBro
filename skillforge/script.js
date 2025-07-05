@@ -321,7 +321,7 @@ confettiStyle.textContent = `
 document.head.appendChild(confettiStyle);
 
 // Loading States
-function showLoading(text = 'Processing...') {
+function showLoading(text = '') {
     const overlay = document.getElementById('loadingOverlay');
     const loadingText = overlay.querySelector('.loading-text');
     loadingText.textContent = text;
