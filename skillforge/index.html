@@ -49,6 +49,8 @@
                     <a href="#roadmaps" class="nav-link" onclick="switchToModule('roadmap')">Roadmaps</a>
                     <a href="#mentor" class="nav-link" onclick="switchToModule('mentor')">Mentor</a>
                     <a href="#jobs" class="nav-link" onclick="switchToModule('jobs')">Job Alerts</a>
+                    <a href="#tech-news" class="nav-link" onclick="switchToModule('news')">Tech News</a>
+                    <a href="#blogs" class="nav-link" onclick="switchToModule('blogs')">Tech Blogs</a>
                 </div>
                 <button class="cta-btn" id="getStarted">Get Started</button>
             </nav>
@@ -257,6 +259,22 @@
                         </svg>
                     </div>
                     <span>Job Alerts</span>
+                </button>
+                <button class="nav-tab" data-module="news">
+                    <div class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3h16v2H2V3zm0 4h16v2H2V7zm0 4h16v2H2v-2zm0 4h10v2H2v-2z"/>
+                        </svg>
+                    </div>
+                    <span>Tech News</span>
+                </button>
+                <button class="nav-tab" data-module="blogs">
+                    <div class="tab-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M3 4h14v2H3V4zm0 4h14v2H3V8zm0 4h14v2H3v-2zm0 4h9v2H3v-2z"/>
+                        </svg>
+                    </div>
+                    <span>Tech Blogs</span>
                 </button>
             </div>
         </nav>
@@ -705,6 +723,81 @@
                 </div>
             </section>
 
+            <!-- Tech News Module -->
+            <section class="module" id="news">
+                <div class="news-container">
+                    <div class="news-header">
+                        <h2><i class="fas fa-newspaper"></i> Tech News</h2>
+                        <p>Stay updated with the latest in technology</p>
+                    </div>
+                    
+                    <div class="news-filters">
+                        <button class="filter-chip active" data-filter="all">All</button>
+                        <button class="filter-chip" data-filter="cloud">Cloud</button>
+                        <button class="filter-chip" data-filter="frontend">Frontend</button>
+                        <button class="filter-chip" data-filter="backend">Backend</button>
+                    </div>
+                    
+                    <div class="news-loading" id="newsLoading">
+                        <div class="loading-spinner"></div>
+                        <p>Loading latest tech news...</p>
+                    </div>
+                    
+                    <div class="news-grid" id="newsGrid" style="display: none;">
+                        <!-- News articles will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Blogs Module -->
+            <section class="module" id="blogs">
+                <div class="blogs-container">
+                    <div class="blogs-header">
+                        <h2><i class="fas fa-blog"></i> Tech Blogs</h2>
+                        <p>In-depth articles and tutorials</p>
+                        <button class="btn-primary" id="adminPortalBtn" style="display: none;">Admin Portal</button>
+                    </div>
+                    
+                    <div class="blogs-grid" id="blogsGrid">
+                        <!-- Blog posts will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Admin Portal Modal -->
+                <div class="admin-modal" id="adminModal" style="display: none;">
+                    <div class="admin-modal-content">
+                        <div class="admin-header">
+                            <h3>Admin Portal - Create Blog Post</h3>
+                            <button class="close-admin" id="closeAdmin">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <form class="admin-form" id="blogForm">
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" id="blogTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Author</label>
+                                <input type="text" id="blogAuthor" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Tags (comma separated)</label>
+                                <input type="text" id="blogTags" placeholder="React, JavaScript, Tutorial">
+                            </div>
+                            <div class="form-group">
+                                <label>Content</label>
+                                <textarea id="blogContent" rows="10" required></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" id="cancelBlog">Cancel</button>
+                                <button type="submit" class="btn-primary">Publish Blog</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
             <!-- ResumeGPT Module -->
             <section class="module" id="resume">
                 <div class="resume-container">
@@ -927,6 +1020,8 @@
     <script src="modules/skilltree.js"></script>
     <script src="modules/roadmap.js"></script>
     <script src="modules/resumegpt.js"></script>
+    <script src="modules/technews.js"></script>
+    <script src="modules/techblogs.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

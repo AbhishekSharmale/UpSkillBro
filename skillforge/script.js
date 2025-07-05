@@ -16,6 +16,9 @@ function updateNavIndicator() {
 
 // Initialize Application
 function initializeApp() {
+    // Handle initial route
+    handleInitialRoute();
+    
     // Initialize module display
     initializeModules();
     
@@ -26,6 +29,17 @@ function initializeApp() {
     if (window.SkillTree) SkillTree.init();
     if (window.RoadmapModule) RoadmapModule.init();
     if (window.ResumeGPT) ResumeGPT.init();
+    if (window.TechNews) TechNews.init();
+    if (window.TechBlogs) TechBlogs.init();
+    
+    // Handle browser back/forward
+    window.addEventListener('popstate', (e) => {
+        if (e.state && e.state.module) {
+            switchModule(e.state.module);
+        } else {
+            handleInitialRoute();
+        }
+    });
     
     // Initialize new modules
     setTimeout(() => {
@@ -92,9 +106,28 @@ function switchModule(moduleName) {
     
     if (moduleName === currentModule) return;
     
+    // Update URL without page reload
+    const routes = {
+        'skilltree': '#learning-path',
+        'roadmap': '#roadmaps', 
+        'mentor': '#mentor',
+        'jobs': '#jobs',
+        'news': '#tech-news',
+        'blogs': '#blogs'
+    };
+    
+    if (routes[moduleName]) {
+        history.pushState({module: moduleName}, '', routes[moduleName]);
+    }
+    
     // Update navigation tabs
     document.querySelectorAll('.nav-tab').forEach(tab => {
         tab.classList.remove('active');
+    });
+    
+    // Update top nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
     });
     
     const activeTab = document.querySelector(`[data-module="${moduleName}"]`);
@@ -132,6 +165,12 @@ function switchModule(moduleName) {
                 break;
             case 'resume':
                 if (window.ResumeGPT) ResumeGPT.focus();
+                break;
+            case 'news':
+                if (window.TechNews) TechNews.init();
+                break;
+            case 'blogs':
+                if (window.TechBlogs) TechBlogs.init();
                 break;
         }
     }, 100);
@@ -698,6 +737,22 @@ function initJobsModule() {
 function switchToModule(moduleName) {
     switchModule(moduleName);
     document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Handle initial route based on URL hash
+function handleInitialRoute() {
+    const hash = window.location.hash;
+    const routeMap = {
+        '#learning-path': 'skilltree',
+        '#roadmaps': 'roadmap',
+        '#mentor': 'mentor', 
+        '#jobs': 'jobs',
+        '#tech-news': 'news',
+        '#blogs': 'blogs'
+    };
+    
+    const module = routeMap[hash] || 'skilltree';
+    currentModule = module;
 }
 
 // Export global functions
