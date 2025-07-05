@@ -529,10 +529,23 @@ function initCareerSelector() {
     const careerSelector = document.getElementById('careerSelector');
     const backBtn = document.getElementById('backBtn');
     
-    careerCards.forEach(card => {
-        card.addEventListener('click', () => {
+    // Handle Start Path button clicks
+    document.querySelectorAll('.btn-start-path').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const card = e.target.closest('.career-card');
             const path = card.dataset.path;
-            showRoadmap(path);
+            startLearningPath(path);
+        });
+    });
+    
+    // Handle card clicks (for roadmap view)
+    careerCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('btn-start-path')) {
+                const path = card.dataset.path;
+                showRoadmap(path);
+            }
         });
     });
     
@@ -540,6 +553,34 @@ function initCareerSelector() {
         roadmapViewer.style.display = 'none';
         careerSelector.style.display = 'block';
     });
+}
+
+function startLearningPath(path) {
+    // Switch to Learning Path module and set the selected path
+    switchToModule('skilltree');
+    
+    // Update dropdown selection
+    const dropdown = document.getElementById('dropdownTrigger');
+    const selectedText = document.getElementById('selectedText');
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    
+    // Find and activate the corresponding dropdown item
+    dropdownItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.dataset.value === path) {
+            item.classList.add('active');
+            selectedText.textContent = item.querySelector('.item-title').textContent;
+        }
+    });
+    
+    // Update the skilltree if it exists
+    if (window.SkillTree) {
+        window.SkillTree.currentRoadmap = path;
+        window.SkillTree.renderRoadmap();
+    }
+    
+    // Show success notification
+    showNotification(`Started ${path} learning path!`, 'success');
 }
 
 async function showRoadmap(path) {
