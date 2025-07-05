@@ -20,16 +20,38 @@ window.SkillTree = {
             frontend: {
                 title: "Frontend Developer",
                 description: "Your fast-track to frontend mastery",
-                levels: [
-                    {
-                        level: 1,
-                        title: "Web Fundamentals",
-                        skills: [
-                            { id: "html-css", name: "HTML & CSS", type: "skill", resources: ["#"] },
-                            { id: "javascript", name: "JavaScript", type: "skill", resources: ["#"] }
-                        ]
-                    }
-                ]
+                levels: [{
+                    level: 1,
+                    title: "Web Fundamentals",
+                    skills: [
+                        { id: "html-css", name: "HTML & CSS", type: "skill", resources: ["#"] },
+                        { id: "javascript", name: "JavaScript", type: "skill", resources: ["#"] }
+                    ]
+                }]
+            },
+            backend: {
+                title: "Backend Developer",
+                description: "Master backend development fast",
+                levels: [{
+                    level: 1,
+                    title: "Programming Language",
+                    skills: [
+                        { id: "nodejs", name: "Node.js", type: "language", resources: ["#"] },
+                        { id: "python-backend", name: "Python", type: "language", resources: ["#"] }
+                    ]
+                }]
+            },
+            devops: {
+                title: "DevOps Engineer",
+                description: "Level up to DevOps mastery",
+                levels: [{
+                    level: 1,
+                    title: "Foundation",
+                    skills: [
+                        { id: "linux-devops", name: "Linux", type: "skill", resources: ["#"] },
+                        { id: "docker-basics", name: "Docker", type: "tool", resources: ["#"] }
+                    ]
+                }]
             }
         };
     },
@@ -152,7 +174,6 @@ window.SkillTree = {
         if (skillData) {
             skill = skillData;
         } else {
-            // Find skill in current roadmap
             const roadmap = this.roadmaps[this.currentRoadmap];
             for (const level of roadmap.levels) {
                 const foundSkill = level.skills.find(s => s.id === skillId);
@@ -165,60 +186,105 @@ window.SkillTree = {
         
         if (!skill) return;
 
-        // Store current skill ID
         this.currentSkillId = skillId;
-
-        // Populate modal
-        document.getElementById('skillTitle').textContent = skill.name;
-        document.getElementById('skillDescription').innerHTML = `
-            <p>Master ${skill.name} - ${skill.type}</p>
-            <div class="skill-meta">
-                <span class="skill-type-badge skill-${skill.type}">${skill.type}</span>
-            </div>
-        `;
-
-        // Resources
-        document.getElementById('skillResources').innerHTML = `
-            <h4>Learning Resources</h4>
-            <div class="resources-list">
-                ${skill.resources.map((resource, index) => `
-                    <div class="resource-item">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span>Resource ${index + 1}</span>
-                        <a href="${resource}" target="_blank" class="resource-link">
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-
-        // Checklist
-        const checklist = this.getSkillChecklist(skill.type);
-        document.getElementById('skillChecklist').innerHTML = `
-            <h4>Learning Checklist</h4>
-            <div class="checklist">
-                ${checklist.map((item, index) => `
-                    <label class="checklist-item">
-                        <input type="checkbox" data-skill="${skillId}" data-item="${index}">
-                        <span class="checkmark"></span>
-                        <span class="checklist-text">${item}</span>
-                    </label>
-                `).join('')}
-            </div>
-        `;
-
-        // Complete button
-        const completeBtn = document.getElementById('completeSkill');
+        
+        // Close any existing expanded skill
+        this.closeExpandedSkill();
+        
+        // Find the clicked skill node
+        const skillNode = document.querySelector(`[data-skill-id="${skillId}"]`);
+        if (!skillNode) return;
+        
+        // Create expanded content
+        const expandedContent = this.createExpandedSkillContent(skill, skillId);
+        
+        // Insert after the skill node
+        skillNode.insertAdjacentHTML('afterend', expandedContent);
+        
+        // Add expanded class to skill node
+        skillNode.classList.add('expanded');
+        
+        // Smooth scroll to expanded content
+        setTimeout(() => {
+            const expandedElement = document.querySelector('.skill-expanded');
+            if (expandedElement) {
+                expandedElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }, 100);
+    },
+    
+    createExpandedSkillContent(skill, skillId) {
         const userProgress = window.UpskillBro?.userProgress || {};
         const isCompleted = userProgress[skillId];
-        completeBtn.innerHTML = isCompleted ? 
-            '<i class="fas fa-check"></i> Completed' : 
-            '<i class="fas fa-check"></i> Mark Complete';
-        completeBtn.disabled = isCompleted;
-
-        // Show modal
-        document.getElementById('skillModal').classList.add('active');
+        const checklist = this.getSkillChecklist(skill.type);
+        
+        return `
+            <div class="skill-expanded" data-skill-id="${skillId}">
+                <div class="skill-expanded-header">
+                    <h3>${skill.name}</h3>
+                    <button class="close-expanded" onclick="SkillTree.closeExpandedSkill()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="skill-expanded-content">
+                    <div class="skill-meta">
+                        <span class="skill-type-badge skill-${skill.type}">${skill.type}</span>
+                    </div>
+                    <div class="skill-resources">
+                        <h4>Learning Resources</h4>
+                        <div class="resources-list">
+                            ${skill.resources.map((resource, index) => `
+                                <div class="resource-item">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>Resource ${index + 1}</span>
+                                    <a href="${resource}" target="_blank" class="resource-link">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="skill-checklist">
+                        <h4>Learning Checklist</h4>
+                        <div class="checklist">
+                            ${checklist.map((item, index) => `
+                                <label class="checklist-item">
+                                    <input type="checkbox" data-skill="${skillId}" data-item="${index}">
+                                    <span class="checkmark"></span>
+                                    <span class="checklist-text">${item}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="skill-actions">
+                        <button class="btn-complete ${isCompleted ? 'completed' : ''}" 
+                                onclick="SkillTree.completeSkill('${skillId}')" 
+                                ${isCompleted ? 'disabled' : ''}>
+                            <i class="fas fa-check"></i>
+                            ${isCompleted ? 'Completed' : 'Mark Complete'}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    },
+    
+    closeExpandedSkill() {
+        const expanded = document.querySelector('.skill-expanded');
+        if (expanded) {
+            expanded.remove();
+        }
+        document.querySelectorAll('.skill-node.expanded').forEach(node => {
+            node.classList.remove('expanded');
+        });
+    },
+    
+    completeSkill(skillId) {
+        if (skillId) {
+            window.UpskillBro?.saveProgress(skillId, true);
+            this.renderRoadmap();
+            this.closeExpandedSkill();
+        }
     },
 
     getResourceIcon(type) {
@@ -235,18 +301,17 @@ window.SkillTree = {
         // Custom dropdown functionality
         this.initCustomDropdown();
         
-        // Modal close
-        document.getElementById('modalClose').addEventListener('click', () => {
-            document.getElementById('skillModal').classList.remove('active');
+        // Close expanded skill on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeExpandedSkill();
+            }
         });
-
-        // Complete skill
-        document.getElementById('completeSkill').addEventListener('click', () => {
-            if (this.currentSkillId) {
-                window.UpskillBro?.saveProgress(this.currentSkillId, true);
-                this.renderRoadmap();
-                document.getElementById('skillModal').classList.remove('active');
-                this.currentSkillId = null;
+        
+        // Close expanded skill when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.skill-expanded') && !e.target.closest('.skill-node')) {
+                this.closeExpandedSkill();
             }
         });
 
@@ -334,8 +399,11 @@ window.SkillTree = {
                 selectedText.textContent = title;
                 
                 // Change roadmap
-                this.currentRoadmap = value;
-                this.renderRoadmap();
+                if (this.currentRoadmap !== value) {
+                    this.currentRoadmap = value;
+                    this.closeExpandedSkill();
+                    this.renderRoadmap();
+                }
                 
                 // Close dropdown
                 this.closeDropdown();
@@ -477,6 +545,96 @@ skillModalStyles.textContent = `
         justify-content: center;
         color: var(--primary-bg);
         font-size: 12px;
+    }
+    
+    /* Inline Expandable Skill Styles */
+    .skill-expanded {
+        grid-column: 1 / -1;
+        background: var(--bg-secondary);
+        border: 2px solid var(--accent-primary);
+        border-radius: 16px;
+        margin: 1rem 0;
+        animation: expandIn 0.3s ease;
+        overflow: hidden;
+    }
+    
+    .skill-expanded-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border-color);
+        background: rgba(0, 255, 136, 0.05);
+    }
+    
+    .skill-expanded-header h3 {
+        color: var(--accent-primary);
+        margin: 0;
+        font-size: 1.25rem;
+    }
+    
+    .close-expanded {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+    
+    .close-expanded:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--accent-primary);
+    }
+    
+    .skill-expanded-content {
+        padding: 2rem;
+        display: grid;
+        gap: 2rem;
+    }
+    
+    .skill-expanded .skill-resources,
+    .skill-expanded .skill-checklist {
+        background: var(--bg-card);
+        border-radius: 12px;
+        padding: 1.5rem;
+    }
+    
+    .skill-expanded h4 {
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    
+    .skill-actions {
+        display: flex;
+        justify-content: center;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .btn-complete.completed {
+        background: var(--text-muted);
+        cursor: not-allowed;
+    }
+    
+    .skill-node.expanded {
+        border-color: var(--accent-primary);
+        background: rgba(0, 255, 136, 0.1);
+        transform: scale(1.02);
+    }
+    
+    @keyframes expandIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px) scaleY(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scaleY(1);
+        }
     }
 `;
 document.head.appendChild(skillModalStyles);
