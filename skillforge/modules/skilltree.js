@@ -78,9 +78,12 @@ window.SkillTree = {
         const roadmap = this.roadmaps[this.currentRoadmap];
         if (!roadmap) return;
         
-        // Update header
-        document.getElementById('roadmapTitle').textContent = roadmap.title + ' Path';
-        document.getElementById('roadmapDescription').textContent = roadmap.description;
+        // Update header - target the specific roadmap title in skilltree container
+        const roadmapTitleEl = document.querySelector('.skilltree-container #roadmapTitle');
+        const roadmapDescEl = document.querySelector('.skilltree-container #roadmapDescription');
+        
+        if (roadmapTitleEl) roadmapTitleEl.textContent = roadmap.title + ' Path';
+        if (roadmapDescEl) roadmapDescEl.textContent = roadmap.description;
         
         // Update progress
         this.updateProgress();
