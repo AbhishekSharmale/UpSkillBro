@@ -1,0 +1,6 @@
+@echo off
+echo Installing performance dependencies...
+npm install compression
+echo.
+echo Restarting server with optimizations...
+npm start

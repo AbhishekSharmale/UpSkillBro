@@ -6,9 +6,14 @@
     <title>UpskillBro - Level up fast. No fluff. Just growth.</title>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="journey-flow.css">
-    <link rel="stylesheet" href="auth.css">
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="journey-flow.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="auth.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="journey-flow.css">
+        <link rel="stylesheet" href="auth.css">
+    </noscript>
 </head>
 <body>
     <!-- Animated Background -->
@@ -1127,13 +1132,14 @@
     </div>
 
     <!-- Scripts -->
-    <script src="modules/skilltree.js"></script>
-    <script src="modules/roadmap.js"></script>
-    <script src="modules/resumegpt.js"></script>
-    <script src="modules/technews.js"></script>
-    <script src="modules/techblogs.js"></script>
-    <script src="modules/roadmap-viewer.js"></script>
-    <script src="modules/auth.js"></script>
-    <script src="script.js"></script>
+    <script src="optimize.js"></script>
+    <script src="modules/auth.js" defer></script>
+    <script src="modules/skilltree.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="modules/roadmap.js" defer></script>
+    <script src="modules/resumegpt.js" defer></script>
+    <script src="modules/technews.js" defer></script>
+    <script src="modules/techblogs.js" defer></script>
+    <script src="modules/roadmap-viewer.js" defer></script>
 </body>
 </html>

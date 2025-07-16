@@ -3,12 +3,16 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const compression = require('compression');
 require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Performance middleware
+app.use(compression());
 
 // Security middleware
 app.use(helmet());
@@ -37,8 +41,11 @@ app.use('/api/auth', authLimiter);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files
-app.use(express.static('.'));
+// Serve static files with caching
+app.use(express.static('.', {
+    maxAge: '1d',
+    etag: true
+}));
 
 // MongoDB connection with retry logic
 const connectDB = async () => {
