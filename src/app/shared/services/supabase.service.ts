@@ -8,9 +8,8 @@ export class SupabaseService {
   private supabase: SupabaseClient;
 
   constructor() {
-    // Replace with your Supabase URL and anon key
-    const supabaseUrl = 'https://your-project.supabase.co';
-    const supabaseKey = 'your-anon-key';
+    const supabaseUrl = 'https://gvenjrlppbzpigovcfsa.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2ZW5qcmxwcGJ6cGlnb3ZjZnNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM4OTczNTQsImV4cCI6MjA2OTQ3MzM1NH0.IfrS7GHIgw7gY0KUiussgnKgP44dRbgBIgMufifBXPU';
     
     this.supabase = createClient(supabaseUrl, supabaseKey);
   }
