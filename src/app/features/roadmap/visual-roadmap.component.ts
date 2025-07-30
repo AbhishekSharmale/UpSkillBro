@@ -223,10 +223,10 @@ export class VisualRoadmapComponent implements OnInit {
         <div class="modal-body">
           <p>Start your learning journey with these curated resources:</p>
           <div class="resource-links">
-            ${resources.map(resource => `
+            ${resources.map((resource: any) => `
               <div class="resource-item">
                 <h4>${resource.category}</h4>
-                ${resource.links.map(link => `
+                ${resource.links.map((link: any) => `
                   <a href="${link.url}" target="_blank" class="resource-link">
                     <span class="link-icon">${link.icon}</span>
                     <span class="link-text">${link.title}</span>
