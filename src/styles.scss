@@ -1,0 +1,334 @@
+// UpskillBro Design System
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+// Color Variables - Light Theme
+:root {
+  --primary-blue: #0038FF;
+  --primary-gradient: linear-gradient(135deg, #0038FF 0%, #4F8EFF 100%);
+  --background-white: #FFFFFF;
+  --light-gray-bg: #F6F7F9;
+  --secondary-gray: #6C6C6C;
+  --black-text: #000000;
+  --hover-blue: #0030E6;
+  --border-color: #E5E7EB;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --card-hover-shadow: 0 8px 32px rgba(0, 56, 255, 0.15);
+  --success-color: #10B981;
+  --warning-color: #F59E0B;
+  --error-color: #EF4444;
+}
+
+// Dark Theme Variables
+.dark-theme {
+  --primary-blue: #5B9BFF;
+  --primary-gradient: linear-gradient(135deg, #5B9BFF 0%, #7BB3FF 100%);
+  --background-white: #0F1419;
+  --light-gray-bg: #1A202C;
+  --secondary-gray: #A0AEC0;
+  --black-text: #F7FAFC;
+  --hover-blue: #7BB3FF;
+  --border-color: #2D3748;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --card-hover-shadow: 0 12px 40px rgba(91, 155, 255, 0.3);
+  --success-color: #48BB78;
+  --warning-color: #ED8936;
+  --error-color: #F56565;
+}
+
+// Global Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--background-white);
+  color: var(--black-text);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+  
+  // Mobile optimizations
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dark-theme body {
+  background: linear-gradient(135deg, #0F1419 0%, #1A202C 100%);
+}
+
+// Layout
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
+
+// Buttons
+.btn-primary {
+  background: var(--primary-gradient);
+  color: var(--background-white);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 56, 255, 0.3);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  padding: 12px 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: var(--primary-blue);
+    color: var(--background-white);
+  }
+}
+
+// Cards
+.card {
+  background: var(--background-white);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  padding: 32px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
+    
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--black-text);
+  line-height: 1.2;
+}
+
+h1 { 
+  font-size: 3.5rem;
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+h2 { 
+  font-size: 2.5rem;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+  }
+}
+
+h3 { 
+  font-size: 1.875rem;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+}
+
+h4 { 
+  font-size: 1.5rem;
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+p {
+  color: var(--secondary-gray);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+// Utilities
+.text-center { text-align: center; }
+.mb-20 { margin-bottom: 20px; }
+.mt-20 { margin-top: 20px; }
+.section-padding { 
+  padding: 80px 0;
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
+  @media (max-width: 480px) {
+    padding: 40px 0;
+  }
+}
+
+.bg-light { 
+  background: var(--light-gray-bg);
+  transition: background-color 0.3s ease;
+}
+
+// Mobile-specific utilities
+.mobile-hidden {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+// Touch-friendly buttons for mobile
+@media (max-width: 768px) {
+  .btn-primary, .btn-secondary {
+    min-height: 44px;
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+// Enhanced Dark Theme Styling
+.dark-theme {
+  // Global background
+  background: linear-gradient(135deg, #0F1419 0%, #1A202C 100%) !important;
+  
+  // All cards
+  .card {
+    background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%) !important;
+    border: 1px solid #4A5568 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    
+    &:hover {
+      border-color: var(--primary-blue) !important;
+      box-shadow: var(--card-hover-shadow) !important;
+    }
+  }
+  
+  // Specific components
+  .progress-viz, .achievement-showcase, .login-card, .onboarding-modal {
+    background: linear-gradient(135deg, #1A202C 0%, #2A3441 100%) !important;
+    border: 1px solid #4A5568 !important;
+  }
+  
+  // Page backgrounds
+  .dashboard, .landing, .modern-login, .assessment {
+    background: linear-gradient(135deg, #0F1419 0%, #1A202C 50%, #2D3748 100%) !important;
+  }
+  
+  // Feature cards
+  .feature-card, .testimonial, .benefit-item {
+    background: linear-gradient(135deg, #1A202C 0%, #2A3441 100%) !important;
+    border: 1px solid #4A5568 !important;
+    
+    &:hover {
+      border-color: var(--primary-blue) !important;
+      box-shadow: 0 12px 40px rgba(91, 155, 255, 0.2) !important;
+    }
+  }
+  
+  // Form elements
+  input, textarea, select {
+    background: #2D3748 !important;
+    border-color: #4A5568 !important;
+    color: var(--black-text) !important;
+    
+    &:focus {
+      border-color: var(--primary-blue) !important;
+      background: #1A202C !important;
+      box-shadow: 0 0 0 3px rgba(91, 155, 255, 0.1) !important;
+    }
+  }
+  
+  // Navigation and header
+  .header, nav {
+    background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%) !important;
+    border-bottom: 1px solid #4A5568 !important;
+  }
+  
+  // Sections with light backgrounds
+  .bg-light, .features, .testimonials {
+    background: linear-gradient(135deg, #1A202C 0%, #2A3441 100%) !important;
+  }
+  
+  // Assessment specific
+  .question-card, .option-card {
+    background: linear-gradient(135deg, #1A202C 0%, #2A3441 100%) !important;
+    border: 1px solid #4A5568 !important;
+    
+    &:hover, &.selected {
+      border-color: var(--primary-blue) !important;
+      background: linear-gradient(135deg, #2D3748 0%, #4A5568 100%) !important;
+    }
+  }
+}

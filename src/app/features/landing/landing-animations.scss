@@ -1,0 +1,98 @@
+// Landing Page Animations
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes sparkle {
+  0% { transform: translateX(-100px); }
+  100% { transform: translateX(100px); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(0, 56, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 56, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 56, 255, 0); }
+}
+
+.pulse-btn {
+  animation: pulse-glow 2s infinite;
+}
+
+.cta {
+  background: var(--primary-gradient);
+  color: var(--background-white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    animation: sparkle 3s linear infinite;
+  }
+  
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--background-white);
+      margin-bottom: 16px;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 32px;
+    }
+    
+    .btn-primary {
+      background: var(--background-white);
+      color: var(--primary-blue);
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+      
+      .dark-theme & {
+        background: var(--light-gray-bg);
+        color: var(--primary-blue);
+        box-shadow: 0 4px 15px rgba(45, 45, 45, 0.5);
+      }
+      
+      &:hover {
+        background: #f8f9fa;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+        
+        .dark-theme & {
+          background: #404040;
+          box-shadow: 0 8px 25px rgba(79, 142, 255, 0.3);
+        }
+      }
+    }
+  }
+}
+
+.testimonial {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    
+    .author-avatar {
+      transform: scale(1.1);
+    }
+  }
+  
+  .author-avatar {
+    transition: transform 0.3s ease;
+  }
+}

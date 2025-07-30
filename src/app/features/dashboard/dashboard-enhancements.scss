@@ -1,0 +1,138 @@
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .welcome-section h1 {
+    font-size: 2.5rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  
+  .welcome-section p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  .quick-actions {
+    display: flex;
+    gap: 1rem;
+    
+    .action-btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &.primary {
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(0, 56, 255, 0.3);
+        }
+      }
+      
+      &.secondary {
+        background: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+        
+        &:hover {
+          background: var(--primary-blue);
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  
+  .btn-link {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.streak-card {
+  .streak-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .streak-icon {
+    font-size: 3rem;
+    animation: flame-flicker 2s infinite;
+  }
+  
+  .streak-info h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--black-text);
+  }
+  
+  .streak-info p {
+    margin: 0 0 1rem 0;
+    color: var(--secondary-gray);
+  }
+  
+  .streak-calendar {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .day {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--border-color);
+    color: var(--secondary-gray);
+    
+    &.completed {
+      background: var(--primary-gradient);
+      color: white;
+    }
+  }
+}
+
+@keyframes flame-flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.1) rotate(2deg); }
+}
+
+.progress-visualization {
+  margin-bottom: 2rem;
+}

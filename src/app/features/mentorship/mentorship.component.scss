@@ -1,0 +1,89 @@
+.mentorship {
+  padding: 2rem 0;
+  background: #f8f9fa;
+  min-height: 100vh;
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+  
+  .filter-select {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+  }
+}
+
+.mentors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.mentor-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  .mentor-avatar {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .mentor-role {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .mentor-rating {
+    color: #ff9800;
+    margin-bottom: 1rem;
+  }
+  
+  .mentor-skills {
+    margin-bottom: 1rem;
+    
+    .skill-tag {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin: 0.25rem;
+    }
+  }
+  
+  .mentor-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2196F3;
+    margin-bottom: 1rem;
+  }
+}

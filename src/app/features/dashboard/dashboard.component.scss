@@ -1,0 +1,316 @@
+.dashboard {
+  padding: 2rem 0;
+  background: linear-gradient(135deg, var(--light-gray-bg) 0%, #f0f2f5 100%);
+  min-height: 100vh;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: var(--primary-gradient);
+    opacity: 0.05;
+    border-radius: 0 0 50px 50px;
+  }
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  
+  h1 {
+    font-size: 2.5rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.progress-card {
+  background: linear-gradient(135deg, var(--background-white) 0%, #f8fafc 100%);
+  
+  .progress-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    
+    .stat {
+      text-align: center;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 2px;
+        background: var(--primary-gradient);
+        border-radius: 1px;
+      }
+      
+      .stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .stat-label {
+        color: #666;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  .progress-bar {
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--primary-gradient);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        animation: progress-shine 2s infinite;
+      }
+    }
+  }
+}
+
+.roadmap-card {
+  .roadmap-preview {
+    h4 {
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: #666;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    
+    .next-milestone {
+      background: #f3f8ff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      border-left: 4px solid #2196F3;
+    }
+  }
+}
+
+.actions-card {
+  .action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    
+    .action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--primary-gradient);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      &:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 56, 255, 0.2);
+        border-color: transparent;
+        
+        &::before {
+          opacity: 1;
+        }
+        
+        span {
+          color: var(--background-white);
+          position: relative;
+          z-index: 1;
+        }
+        
+        .action-icon {
+          transform: scale(1.2);
+        }
+      }
+      
+      .action-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      
+      span:last-child {
+        font-weight: 500;
+        color: #333;
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease;
+      }
+    }
+  }
+}
+
+.activity-card {
+  .activity-list {
+    .activity-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .activity-icon {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+      }
+      
+      .activity-content {
+        .activity-title {
+          font-weight: 500;
+          color: #333;
+        }
+        
+        .activity-time {
+          color: #666;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+.sessions-card {
+  .sessions-list {
+    .session-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .session-info {
+        .session-title {
+          font-weight: 500;
+          color: #333;
+          margin-bottom: 0.25rem;
+        }
+        
+        .session-mentor {
+          color: #666;
+          font-size: 0.9rem;
+          margin-bottom: 0.25rem;
+        }
+        
+        .session-time {
+          color: #2196F3;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+.achievements-card {
+  .achievements-list {
+    .achievement {
+      display: flex;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .achievement-badge {
+        font-size: 2rem;
+        margin-right: 1rem;
+      }
+      
+      .achievement-info {
+        .achievement-title {
+          font-weight: 500;
+          color: #333;
+        }
+        
+        .achievement-date {
+          color: #666;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+.community {
+  padding: 2rem 0;
+  background: #f8f9fa;
+  min-height: 100vh;
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.community-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  
+  .stat {
+    text-align: center;
+    
+    .stat-value {
+      display: block;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #2196F3;
+    }
+    
+    .stat-label {
+      color: #666;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.community-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.section-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+}
+
+.recent-topics, .study-groups, .challenges {
+  .topic, .group, .challenge {
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    h4 {
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .topic-meta, .group-info, .challenge-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #999;
+    font-size: 0.8rem;
+  }
+}

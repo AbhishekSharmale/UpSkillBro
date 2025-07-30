@@ -1,0 +1,120 @@
+.interview {
+  padding: 2rem 0;
+  background: #f8f9fa;
+  min-height: 100vh;
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.interview-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.interview-type {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  .type-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .type-stats {
+    display: flex;
+    justify-content: space-around;
+    color: #2196F3;
+    font-weight: 500;
+  }
+}
+
+.recent-interviews {
+  h2 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .interview-history {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    
+    .interview-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .interview-info {
+        h4 {
+          color: #333;
+          margin-bottom: 0.25rem;
+        }
+        
+        p {
+          color: #666;
+          font-size: 0.9rem;
+          margin: 0;
+          text-align: left;
+        }
+      }
+      
+      .interview-score {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        
+        .score {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #4CAF50;
+        }
+      }
+    }
+  }
+}
+
+.voice-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}

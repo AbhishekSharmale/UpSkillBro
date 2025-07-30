@@ -1,0 +1,85 @@
+.dark-theme {
+  // Enhanced card styling
+  .card {
+    background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+    border: 1px solid #4A5568;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    
+    &:hover {
+      border-color: var(--primary-blue);
+      box-shadow: var(--card-hover-shadow);
+    }
+  }
+  
+  // Progress visualization dark theme
+  .progress-viz {
+    background: linear-gradient(135deg, #1A202C 0%, #2A3441 100%);
+    border: 1px solid #4A5568;
+  }
+  
+  // Achievement showcase dark theme
+  .achievement-showcase {
+    background: linear-gradient(135deg, #1A202C 0%, #2A3441 100%);
+    border: 1px solid #4A5568;
+  }
+  
+  // Dashboard specific dark theme
+  .dashboard {
+    background: linear-gradient(135deg, #0F1419 0%, #1A202C 50%, #2D3748 100%);
+    
+    &::before {
+      background: linear-gradient(135deg, rgba(91, 155, 255, 0.1) 0%, transparent 100%);
+    }
+  }
+  
+  // Button enhancements
+  .btn-primary {
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 15px rgba(91, 155, 255, 0.3);
+    
+    &:hover {
+      box-shadow: 0 8px 25px rgba(91, 155, 255, 0.4);
+    }
+  }
+  
+  .btn-secondary {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    
+    &:hover {
+      background: var(--primary-blue);
+      color: #0F1419;
+    }
+  }
+  
+  // Input field enhancements
+  input {
+    background: #2D3748;
+    border-color: #4A5568;
+    color: var(--black-text);
+    
+    &:focus {
+      border-color: var(--primary-blue);
+      background: #1A202C;
+      box-shadow: 0 0 0 3px rgba(91, 155, 255, 0.1);
+    }
+  }
+  
+  // Streak card dark theme
+  .streak-card {
+    background: linear-gradient(135deg, #1A202C 0%, #2A3441 100%);
+    border: 1px solid #4A5568;
+  }
+  
+  // Feature card dark theme
+  .feature-card {
+    background: linear-gradient(135deg, #1A202C 0%, #2A3441 100%);
+    border: 1px solid #4A5568;
+    
+    &:hover {
+      border-color: var(--primary-blue);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(91, 155, 255, 0.2);
+    }
+  }
+}

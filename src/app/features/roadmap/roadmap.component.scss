@@ -1,0 +1,321 @@
+.roadmap {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.roadmap-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary) !important;
+    margin-bottom: 2rem;
+  }
+}
+
+.salary-progression {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  max-width: 600px;
+  margin: 0 auto;
+  
+  .salary-item {
+    text-align: center;
+    
+    .label {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-primary);
+    }
+    
+    &.target .value {
+      color: var(--accent-primary);
+    }
+  }
+  
+  .arrow {
+    font-size: 2rem;
+    color: var(--accent-primary);
+  }
+  
+  .timeline {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+}
+
+.roadmap-visual {
+  margin: 3rem 0;
+}
+
+.milestone-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.milestone-container {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.milestone-connector {
+  position: absolute;
+  left: 30px;
+  top: -3rem;
+  width: 2px;
+  height: 3rem;
+  background: var(--accent-primary);
+  opacity: 0.5;
+}
+
+.milestone-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.15);
+  }
+  
+  &.completed {
+    border-color: var(--accent-primary);
+    background: rgba(0, 255, 136, 0.05);
+  }
+}
+
+.milestone-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.milestone-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.milestone-info {
+  flex: 1;
+  
+  h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+.milestone-meta {
+  display: flex;
+  gap: 1rem;
+  
+  span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 12px;
+  }
+}
+
+.milestone-content {
+  margin-bottom: 1.5rem;
+  
+  h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+}
+
+.skills-section {
+  margin-bottom: 1.5rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  
+  .skill-tag {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--accent-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+  }
+}
+
+.tasks-section {
+  margin-bottom: 1.5rem;
+  
+  .tasks-list {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      color: var(--text-secondary);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+      padding-left: 1.5rem;
+      
+      &:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: var(--accent-primary);
+        font-weight: bold;
+      }
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.resources-section {
+  .resources-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+    .resource-tag {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--accent-secondary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+  }
+}
+
+.milestone-actions {
+  text-align: center;
+  
+  button {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &.btn-primary {
+      background: var(--gradient-primary);
+      border: none;
+      color: var(--bg-primary);
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+      }
+    }
+  }
+}
+
+.roadmap-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &.btn-primary {
+      background: var(--gradient-primary);
+      border: none;
+      color: var(--bg-primary);
+    }
+    
+    &.btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      
+      &:hover {
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .salary-progression {
+    flex-direction: column;
+    gap: 1rem;
+    
+    .arrow {
+      transform: rotate(90deg);
+    }
+  }
+  
+  .milestone-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .milestone-meta {
+    justify-content: center;
+  }
+  
+  .roadmap-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.guest-notice {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 8px;
+  
+  p {
+    color: #667eea;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}

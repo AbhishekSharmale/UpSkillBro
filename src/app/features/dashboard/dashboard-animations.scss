@@ -1,0 +1,53 @@
+// Dashboard Animations
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes progress-shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes float-card {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.card {
+  &:nth-child(odd) {
+    animation: float-card 6s ease-in-out infinite;
+  }
+  
+  &:nth-child(even) {
+    animation: float-card 6s ease-in-out infinite reverse;
+    animation-delay: -3s;
+  }
+}
+
+.activity-item, .session-item, .achievement {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  margin: 4px 0;
+  padding: 1rem !important;
+  
+  &:hover {
+    background: rgba(0, 56, 255, 0.05);
+    transform: translateX(8px);
+    box-shadow: 0 2px 8px rgba(0, 56, 255, 0.1);
+    
+    .dark-theme & {
+      background: rgba(79, 142, 255, 0.1);
+      box-shadow: 0 2px 8px rgba(79, 142, 255, 0.2);
+    }
+  }
+}
+
+.achievement-badge, .activity-icon {
+  transition: transform 0.3s ease;
+}
+
+.achievement:hover .achievement-badge,
+.activity-item:hover .activity-icon {
+  transform: scale(1.2) rotate(10deg);
+}
