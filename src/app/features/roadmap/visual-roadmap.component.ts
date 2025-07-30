@@ -257,12 +257,14 @@ export class VisualRoadmapComponent implements OnInit {
         align-items: center;
         justify-content: center;
         z-index: 1000;
+        padding: 20px;
       }
       .modal-content {
         background: white;
         border-radius: 12px;
+        width: 100%;
         max-width: 600px;
-        max-height: 80vh;
+        max-height: 90vh;
         overflow-y: auto;
         box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       }
@@ -272,35 +274,52 @@ export class VisualRoadmapComponent implements OnInit {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
+      }
+      .modal-header h3 {
+        margin: 0;
+        font-size: 18px;
+        flex: 1;
+        padding-right: 10px;
       }
       .close-btn {
         background: none;
         border: none;
-        font-size: 24px;
+        font-size: 28px;
         cursor: pointer;
         color: #666;
+        padding: 5px;
+        min-width: 40px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .modal-body {
         padding: 20px;
       }
       .resource-item {
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
       .resource-item h4 {
         color: #0038FF;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         font-size: 16px;
       }
       .resource-link {
         display: flex;
         align-items: center;
-        padding: 12px;
+        padding: 16px 12px;
         margin-bottom: 8px;
         background: #f8f9fa;
         border-radius: 8px;
         text-decoration: none;
         color: #333;
         transition: all 0.2s;
+        min-height: 60px;
       }
       .resource-link:hover {
         background: #e9ecef;
@@ -308,23 +327,95 @@ export class VisualRoadmapComponent implements OnInit {
       }
       .link-icon {
         margin-right: 12px;
-        font-size: 18px;
+        font-size: 20px;
+        min-width: 24px;
       }
       .link-text {
         flex: 1;
         font-weight: 500;
+        font-size: 14px;
+        line-height: 1.4;
       }
       .link-type {
         background: #0038FF;
         color: white;
-        padding: 4px 8px;
+        padding: 6px 10px;
         border-radius: 4px;
-        font-size: 12px;
+        font-size: 11px;
         text-transform: uppercase;
+        font-weight: 600;
+        min-width: 50px;
+        text-align: center;
       }
       .modal-actions {
         text-align: center;
         margin-top: 20px;
+        padding-bottom: 10px;
+      }
+      .modal-actions .btn-primary {
+        padding: 14px 28px;
+        font-size: 16px;
+        min-height: 48px;
+      }
+      
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .resource-modal {
+          padding: 10px;
+          align-items: flex-start;
+          padding-top: 20px;
+        }
+        .modal-content {
+          max-height: 95vh;
+          border-radius: 8px;
+        }
+        .modal-header {
+          padding: 16px;
+        }
+        .modal-header h3 {
+          font-size: 16px;
+        }
+        .modal-body {
+          padding: 16px;
+        }
+        .resource-link {
+          padding: 14px 10px;
+          flex-direction: column;
+          align-items: flex-start;
+          min-height: auto;
+        }
+        .link-icon {
+          margin-right: 0;
+          margin-bottom: 8px;
+          align-self: flex-start;
+        }
+        .link-text {
+          margin-bottom: 8px;
+          font-size: 13px;
+        }
+        .link-type {
+          align-self: flex-end;
+          font-size: 10px;
+          padding: 4px 8px;
+        }
+        .resource-item h4 {
+          font-size: 15px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .resource-modal {
+          padding: 5px;
+        }
+        .modal-header {
+          padding: 12px;
+        }
+        .modal-body {
+          padding: 12px;
+        }
+        .resource-link {
+          padding: 12px 8px;
+        }
       }
     `;
     
