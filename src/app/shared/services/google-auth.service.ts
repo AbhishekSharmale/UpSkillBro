@@ -98,12 +98,19 @@ export class GoogleAuthService {
   async signOut(): Promise<void> {
     try {
       await signOut(this.auth);
+      // Clear all user data
       localStorage.removeItem('current_user');
       localStorage.removeItem('assessment_completed');
       localStorage.removeItem('assessment_data');
       localStorage.removeItem('roadmap_data');
+      localStorage.removeItem('show_signup_prompt');
+      localStorage.removeItem('pending_roadmap_save');
+      
+      // Update auth state
       this.currentUserSubject.next(null);
       this.isLoggedInSubject.next(false);
+      
+      console.log('User signed out successfully');
     } catch (error) {
       console.error('Sign out failed:', error);
     }

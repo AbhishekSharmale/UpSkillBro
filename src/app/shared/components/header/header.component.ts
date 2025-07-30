@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../features/auth/auth.service';
 import { GoogleAuthService } from '../../services/google-auth.service';
@@ -82,7 +82,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private googleAuth: GoogleAuthService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -96,9 +97,11 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.googleAuth.signOut();
+  async logout() {
+    await this.googleAuth.signOut();
     this.closeMobileMenu();
+    // Redirect to login page after logout
+    this.router.navigate(['/login']);
   }
 
   toggleTheme() {
