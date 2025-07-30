@@ -129,6 +129,16 @@ export class VisualRoadmapComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    // Security check - verify user authentication
+    const currentUser = JSON.parse(localStorage.getItem('current_user') || '{}');
+    
+    if (!currentUser || !currentUser.uid) {
+      // Clear stale data and redirect to login
+      localStorage.clear();
+      this.router.navigate(['/login']);
+      return;
+    }
+    
     this.checkUserType();
     this.loadRoadmap();
   }

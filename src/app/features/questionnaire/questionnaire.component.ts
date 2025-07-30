@@ -151,7 +151,15 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    // Security check - verify user is still authenticated
     const currentUser = JSON.parse(localStorage.getItem('current_user') || '{}');
+    
+    if (!currentUser || !currentUser.uid) {
+      // Clear stale data and redirect to login
+      localStorage.clear();
+      this.router.navigate(['/login']);
+      return;
+    }
     
     // Check Supabase for existing assessment (non-guests only)
     if (!currentUser.isGuest && currentUser.uid) {
