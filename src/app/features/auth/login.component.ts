@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { GoogleAuthService } from '../../shared/services/google-auth.service';
+import { SupabaseService } from '../../shared/services/supabase.service';
 
 @Component({
   selector: 'app-login',
@@ -154,6 +155,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private googleAuth: GoogleAuthService,
+    private supabase: SupabaseService,
     private router: Router
   ) {
     this.emailForm = this.fb.group({
@@ -172,8 +174,19 @@ export class LoginComponent {
       console.log('Attempting Google sign-in...');
       const success = await this.googleAuth.signInWithGoogle();
       if (success) {
+        const user = this.googleAuth.getCurrentUser();
+        
+        // Save user to Supabase
+        try {
+          await this.supabase.createUser(user);
+        } catch (error: any) {
+          // User might already exist, try to update
+          if (error.code === '23505') {
+            await this.supabase.updateUser(user.uid, { last_login: new Date().toISOString() });
+          }
+        }
+        
         console.log('Google sign-in successful, redirecting to assessment');
-        // Always redirect new users to assessment first
         this.router.navigate(['/assessment']);
       } else {
         console.log('Google sign-in was cancelled or failed');
@@ -226,8 +239,15 @@ export class LoginComponent {
         };
       }
       
-      // Create user profile locally
+      // Create user profile locally and in Supabase
       await this.createLocalUser(userData);
+      
+      // Save to Supabase
+      try {
+        await this.supabase.createUser(userData);
+      } catch (error) {
+        console.log('User might already exist in Supabase');
+      }
       
       // Navigate to assessment
       this.router.navigate(['/assessment']);
