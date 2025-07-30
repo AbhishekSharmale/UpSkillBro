@@ -333,88 +333,240 @@ export class VisualRoadmapComponent implements OnInit {
   }
   
   getResourceLinks(milestone: Milestone): any[] {
-    const resourceMap: { [key: string]: any[] } = {
-      'Foundation Building': [
-        {
-          category: '📖 Documentation & Guides',
-          links: [
-            { title: 'MDN Web Docs - JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', icon: '📚', type: 'Docs' },
-            { title: 'React Official Documentation', url: 'https://react.dev/', icon: '⚛️', type: 'Docs' },
-            { title: 'Node.js Official Guide', url: 'https://nodejs.org/en/docs/', icon: '🟢', type: 'Docs' }
-          ]
-        },
-        {
-          category: '🎥 Video Courses',
-          links: [
-            { title: 'JavaScript Fundamentals - freeCodeCamp', url: 'https://www.youtube.com/watch?v=PkZNo7MFNFg', icon: '📺', type: 'Free' },
-            { title: 'React Tutorial - Traversy Media', url: 'https://www.youtube.com/watch?v=w7ejDZ8SWv8', icon: '📺', type: 'Free' },
-            { title: 'Node.js Crash Course', url: 'https://www.youtube.com/watch?v=fBNz5xF-Kx4', icon: '📺', type: 'Free' }
-          ]
-        },
-        {
-          category: '💻 Practice Platforms',
-          links: [
-            { title: 'freeCodeCamp', url: 'https://www.freecodecamp.org/', icon: '🔥', type: 'Free' },
-            { title: 'Codecademy', url: 'https://www.codecademy.com/', icon: '🎓', type: 'Freemium' },
-            { title: 'JavaScript30', url: 'https://javascript30.com/', icon: '⚡', type: 'Free' }
-          ]
-        }
-      ],
-      'Skill Enhancement': [
-        {
-          category: '📖 Advanced Documentation',
-          links: [
-            { title: 'TypeScript Handbook', url: 'https://www.typescriptlang.org/docs/', icon: '🔷', type: 'Docs' },
-            { title: 'React Testing Library', url: 'https://testing-library.com/docs/react-testing-library/intro/', icon: '🧪', type: 'Docs' },
-            { title: 'Express.js Guide', url: 'https://expressjs.com/en/guide/routing.html', icon: '🚀', type: 'Docs' }
-          ]
-        },
-        {
-          category: '🎥 Advanced Courses',
-          links: [
-            { title: 'Advanced React Patterns', url: 'https://www.youtube.com/watch?v=6YbBfPFzuuI', icon: '📺', type: 'Free' },
-            { title: 'TypeScript Course - Net Ninja', url: 'https://www.youtube.com/playlist?list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwDPUI', icon: '📺', type: 'Free' },
-            { title: 'Database Design Course', url: 'https://www.youtube.com/watch?v=ztHopE5Wnpc', icon: '📺', type: 'Free' }
-          ]
-        },
-        {
-          category: '🛠️ Tools & Platforms',
-          links: [
-            { title: 'GitHub Learning Lab', url: 'https://lab.github.com/', icon: '🐙', type: 'Free' },
-            { title: 'Postman Learning Center', url: 'https://learning.postman.com/', icon: '📮', type: 'Free' },
-            { title: 'Docker Getting Started', url: 'https://docs.docker.com/get-started/', icon: '🐳', type: 'Free' }
-          ]
-        }
-      ],
-      'Career Advancement': [
-        {
-          category: '🏗️ System Design',
-          links: [
-            { title: 'System Design Primer', url: 'https://github.com/donnemartin/system-design-primer', icon: '🏗️', type: 'Free' },
-            { title: 'High Scalability', url: 'http://highscalability.com/', icon: '📈', type: 'Free' },
-            { title: 'AWS Architecture Center', url: 'https://aws.amazon.com/architecture/', icon: '☁️', type: 'Free' }
-          ]
-        },
-        {
-          category: '👥 Leadership & Soft Skills',
-          links: [
-            { title: 'Tech Lead Survival Guide', url: 'https://www.youtube.com/watch?v=kOpHykNIxF0', icon: '👨‍💼', type: 'Free' },
-            { title: 'Engineering Management', url: 'https://www.youtube.com/watch?v=iLS6NXMXtLI', icon: '📊', type: 'Free' },
-            { title: 'Code Review Best Practices', url: 'https://google.github.io/eng-practices/review/', icon: '🔍', type: 'Free' }
-          ]
-        },
-        {
-          category: '🎯 Certifications',
-          links: [
-            { title: 'AWS Certified Solutions Architect', url: 'https://aws.amazon.com/certification/certified-solutions-architect-associate/', icon: '🏆', type: 'Paid' },
-            { title: 'Google Cloud Professional', url: 'https://cloud.google.com/certification', icon: '🏆', type: 'Paid' },
-            { title: 'Kubernetes Certification', url: 'https://www.cncf.io/certification/cka/', icon: '🏆', type: 'Paid' }
-          ]
-        }
-      ]
+    // Get current user's role from roadmap data
+    const roadmapData = JSON.parse(localStorage.getItem('roadmap_data') || '{}');
+    const role = roadmapData.title?.toLowerCase() || 'fullstack';
+    
+    // Role-specific resource mapping
+    const roleResourceMap: { [key: string]: { [key: string]: any[] } } = {
+      // FRONTEND DEVELOPER RESOURCES
+      'frontend': {
+        'Foundation Building': [
+          {
+            category: '🎯 Frontend Fundamentals',
+            links: [
+              { title: 'HTML & CSS Complete Course - freeCodeCamp', url: 'https://www.youtube.com/watch?v=mU6anWqZJcc', icon: '🎨', type: 'Free' },
+              { title: 'JavaScript Complete Course - Jonas Schmedtmann', url: 'https://www.udemy.com/course/the-complete-javascript-course/', icon: '⚡', type: 'Paid' },
+              { title: 'CSS Grid & Flexbox - Wes Bos', url: 'https://cssgrid.io/', icon: '📐', type: 'Free' },
+              { title: 'MDN Web Docs - CSS', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS', icon: '📚', type: 'Docs' }
+            ]
+          },
+          {
+            category: '⚛️ React Ecosystem',
+            links: [
+              { title: 'React Official Tutorial', url: 'https://react.dev/learn', icon: '⚛️', type: 'Free' },
+              { title: 'React Course - Maximilian Schwarzmüller', url: 'https://www.udemy.com/course/react-the-complete-guide-incl-redux/', icon: '🎓', type: 'Paid' },
+              { title: 'React Hooks Course - Ben Awad', url: 'https://www.youtube.com/watch?v=f687hBjwFcM', icon: '🪝', type: 'Free' }
+            ]
+          }
+        ],
+        'Skill Enhancement': [
+          {
+            category: '🔷 Advanced JavaScript & TypeScript',
+            links: [
+              { title: 'TypeScript Handbook', url: 'https://www.typescriptlang.org/docs/', icon: '🔷', type: 'Docs' },
+              { title: 'Advanced TypeScript - Marius Schulz', url: 'https://www.youtube.com/playlist?list=PLNqp92_EXZBJYFrpEzdO2EapvU0GOJ09n', icon: '🎓', type: 'Free' },
+              { title: 'JavaScript Design Patterns', url: 'https://www.patterns.dev/', icon: '🎨', type: 'Free' }
+            ]
+          },
+          {
+            category: '🧪 Testing & Quality',
+            links: [
+              { title: 'React Testing Library Course', url: 'https://testingjavascript.com/', icon: '🧪', type: 'Paid' },
+              { title: 'Jest Testing Framework', url: 'https://jestjs.io/docs/getting-started', icon: '🃏', type: 'Docs' },
+              { title: 'Cypress E2E Testing', url: 'https://learn.cypress.io/', icon: '🌲', type: 'Free' }
+            ]
+          }
+        ],
+        'Career Advancement': [
+          {
+            category: '🏗️ Frontend Architecture',
+            links: [
+              { title: 'Micro Frontends Architecture', url: 'https://micro-frontends.org/', icon: '🏗️', type: 'Free' },
+              { title: 'Frontend System Design', url: 'https://www.youtube.com/watch?v=5vyKhm2NTfw', icon: '📐', type: 'Free' },
+              { title: 'Performance Optimization Guide', url: 'https://web.dev/performance/', icon: '⚡', type: 'Free' }
+            ]
+          }
+        ]
+      },
+      
+      // BACKEND DEVELOPER RESOURCES
+      'backend': {
+        'Foundation Building': [
+          {
+            category: '🟢 Node.js & Server Development',
+            links: [
+              { title: 'Node.js Complete Course - Mosh Hamedani', url: 'https://www.youtube.com/watch?v=TlB_eWDSMt4', icon: '🟢', type: 'Free' },
+              { title: 'Express.js Crash Course', url: 'https://www.youtube.com/watch?v=L72fhGm1tfE', icon: '🚀', type: 'Free' },
+              { title: 'RESTful API Design Course', url: 'https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/', icon: '🔗', type: 'Paid' }
+            ]
+          },
+          {
+            category: '🗄️ Database Fundamentals',
+            links: [
+              { title: 'MongoDB Complete Course', url: 'https://www.youtube.com/watch?v=4yqu8YF29cU', icon: '🍃', type: 'Free' },
+              { title: 'PostgreSQL Tutorial', url: 'https://www.postgresqltutorial.com/', icon: '🐘', type: 'Free' },
+              { title: 'Database Design Course - freeCodeCamp', url: 'https://www.youtube.com/watch?v=ztHopE5Wnpc', icon: '🗄️', type: 'Free' }
+            ]
+          }
+        ],
+        'Skill Enhancement': [
+          {
+            category: '🏗️ Advanced Architecture',
+            links: [
+              { title: 'Microservices with Node.js', url: 'https://www.udemy.com/course/microservices-with-node-js-and-react/', icon: '🏗️', type: 'Paid' },
+              { title: 'GraphQL Complete Course', url: 'https://www.howtographql.com/', icon: '📊', type: 'Free' },
+              { title: 'Event-Driven Architecture', url: 'https://www.youtube.com/watch?v=STKCRSUsyP0', icon: '⚡', type: 'Free' }
+            ]
+          }
+        ],
+        'Career Advancement': [
+          {
+            category: '📈 System Design & Scalability',
+            links: [
+              { title: 'System Design Interview Course', url: 'https://www.educative.io/courses/grokking-the-system-design-interview', icon: '🏗️', type: 'Paid' },
+              { title: 'High Scalability Blog', url: 'http://highscalability.com/', icon: '📈', type: 'Free' },
+              { title: 'Designing Data-Intensive Applications', url: 'https://dataintensive.net/', icon: '📚', type: 'Book' }
+            ]
+          }
+        ]
+      },
+      
+      // DATA SCIENTIST RESOURCES
+      'data_scientist': {
+        'Foundation Building': [
+          {
+            category: '🐍 Python for Data Science',
+            links: [
+              { title: 'Python Data Science Handbook', url: 'https://jakevdp.github.io/PythonDataScienceHandbook/', icon: '📚', type: 'Free' },
+              { title: 'Pandas Complete Course', url: 'https://www.youtube.com/watch?v=vmEHCJofslg', icon: '🐼', type: 'Free' },
+              { title: 'NumPy Tutorial', url: 'https://numpy.org/learn/', icon: '🔢', type: 'Free' }
+            ]
+          },
+          {
+            category: '📊 Statistics & Mathematics',
+            links: [
+              { title: 'Statistics for Data Science - Khan Academy', url: 'https://www.khanacademy.org/math/statistics-probability', icon: '📈', type: 'Free' },
+              { title: 'Linear Algebra - 3Blue1Brown', url: 'https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab', icon: '🧮', type: 'Free' }
+            ]
+          }
+        ],
+        'Skill Enhancement': [
+          {
+            category: '🤖 Machine Learning',
+            links: [
+              { title: 'Machine Learning Course - Andrew Ng', url: 'https://www.coursera.org/learn/machine-learning', icon: '🤖', type: 'Paid' },
+              { title: 'Scikit-learn Tutorial', url: 'https://scikit-learn.org/stable/tutorial/index.html', icon: '🔬', type: 'Free' },
+              { title: 'ML Engineering Course', url: 'https://www.youtube.com/watch?v=nhDuley4aMc', icon: '⚙️', type: 'Free' }
+            ]
+          }
+        ],
+        'Career Advancement': [
+          {
+            category: '🏭 MLOps & Production',
+            links: [
+              { title: 'MLOps Specialization', url: 'https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops', icon: '🏭', type: 'Paid' },
+              { title: 'Docker for Data Science', url: 'https://www.youtube.com/watch?v=jbb1dbFaovg', icon: '🐳', type: 'Free' },
+              { title: 'AWS SageMaker Course', url: 'https://aws.amazon.com/sagemaker/getting-started/', icon: '☁️', type: 'Free' }
+            ]
+          }
+        ]
+      },
+      
+      // DEVOPS ENGINEER RESOURCES
+      'devops_engineer': {
+        'Foundation Building': [
+          {
+            category: '🐧 Linux & System Administration',
+            links: [
+              { title: 'Linux Command Line Course', url: 'https://www.youtube.com/watch?v=2PGnYjbYuUo', icon: '🐧', type: 'Free' },
+              { title: 'Linux System Administration', url: 'https://www.edx.org/course/introduction-to-linux', icon: '⚙️', type: 'Free' },
+              { title: 'Shell Scripting Tutorial', url: 'https://www.shellscript.sh/', icon: '📜', type: 'Free' }
+            ]
+          },
+          {
+            category: '🐳 Containerization',
+            links: [
+              { title: 'Docker Complete Course', url: 'https://www.youtube.com/watch?v=3c-iBn73dDE', icon: '🐳', type: 'Free' },
+              { title: 'Docker Official Tutorial', url: 'https://docs.docker.com/get-started/', icon: '📚', type: 'Free' },
+              { title: 'Docker Compose Guide', url: 'https://docs.docker.com/compose/', icon: '🎼', type: 'Free' }
+            ]
+          }
+        ],
+        'Skill Enhancement': [
+          {
+            category: '☸️ Kubernetes',
+            links: [
+              { title: 'Kubernetes Course - TechWorld with Nana', url: 'https://www.youtube.com/watch?v=X48VuDVv0do', icon: '☸️', type: 'Free' },
+              { title: 'Kubernetes Official Tutorial', url: 'https://kubernetes.io/docs/tutorials/', icon: '📚', type: 'Free' },
+              { title: 'CKA Certification Prep', url: 'https://www.cncf.io/certification/cka/', icon: '🏆', type: 'Paid' }
+            ]
+          }
+        ],
+        'Career Advancement': [
+          {
+            category: '📊 Monitoring & Observability',
+            links: [
+              { title: 'Prometheus & Grafana Course', url: 'https://www.youtube.com/watch?v=9TJx7QTrTyo', icon: '📊', type: 'Free' },
+              { title: 'ELK Stack Tutorial', url: 'https://www.elastic.co/guide/index.html', icon: '🔍', type: 'Free' },
+              { title: 'Site Reliability Engineering', url: 'https://sre.google/books/', icon: '🛡️', type: 'Free' }
+            ]
+          }
+        ]
+      },
+      
+      // TECHNICAL PM RESOURCES
+      'technical_pm': {
+        'Foundation Building': [
+          {
+            category: '📋 Product Management Fundamentals',
+            links: [
+              { title: 'Product Management Course - Google', url: 'https://www.coursera.org/professional-certificates/google-project-management', icon: '📋', type: 'Paid' },
+              { title: 'Product School PM Course', url: 'https://productschool.com/product-management-certification/', icon: '🎓', type: 'Paid' },
+              { title: 'Lean Startup Methodology', url: 'http://theleanstartup.com/', icon: '🚀', type: 'Free' }
+            ]
+          },
+          {
+            category: '💻 Technical Understanding',
+            links: [
+              { title: 'Technical Skills for PMs', url: 'https://www.youtube.com/watch?v=Ce1hKGWACkE', icon: '💻', type: 'Free' },
+              { title: 'API Fundamentals for PMs', url: 'https://www.postman.com/api-first/', icon: '🔗', type: 'Free' },
+              { title: 'Database Basics for PMs', url: 'https://www.youtube.com/watch?v=Tk1t3WKK-ZY', icon: '🗄️', type: 'Free' }
+            ]
+          }
+        ],
+        'Skill Enhancement': [
+          {
+            category: '🎯 Advanced Product Strategy',
+            links: [
+              { title: 'Product Strategy Course - Reforge', url: 'https://www.reforge.com/', icon: '🎯', type: 'Paid' },
+              { title: 'Jobs-to-be-Done Framework', url: 'https://jtbd.info/', icon: '🔧', type: 'Free' },
+              { title: 'OKRs for Product Teams', url: 'https://www.whatmatters.com/', icon: '🎯', type: 'Free' }
+            ]
+          }
+        ],
+        'Career Advancement': [
+          {
+            category: '🚀 Senior PM Skills',
+            links: [
+              { title: 'VP of Product Playbook', url: 'https://www.lennysnewsletter.com/', icon: '🚀', type: 'Paid' },
+              { title: 'Product Leadership Course', url: 'https://www.mindtheproduct.com/', icon: '👨‍💼', type: 'Free' },
+              { title: 'Building Product Teams', url: 'https://www.svpg.com/', icon: '👥', type: 'Free' }
+            ]
+          }
+        ]
+      }
     };
     
-    return resourceMap[milestone.title] || [
+    // Extract role from roadmap title
+    let detectedRole = 'fullstack';
+    if (role.includes('frontend')) detectedRole = 'frontend';
+    else if (role.includes('backend')) detectedRole = 'backend';
+    else if (role.includes('data')) detectedRole = 'data_scientist';
+    else if (role.includes('devops')) detectedRole = 'devops_engineer';
+    else if (role.includes('technical_pm') || role.includes('product')) detectedRole = 'technical_pm';
+    
+    return roleResourceMap[detectedRole]?.[milestone.title] || [
       {
         category: '📚 General Resources',
         links: [

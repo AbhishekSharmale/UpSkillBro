@@ -82,9 +82,9 @@ import { Router } from '@angular/router';
                   <span class="action-icon">🎤</span>
                   <span>Interview</span>
                 </button>
-                <button class="action-btn" routerLink="/assessment">
-                  <span class="action-icon">📊</span>
-                  <span>Assessment</span>
+                <button class="action-btn" (click)="retakeAssessment()">
+                  <span class="action-icon">🔄</span>
+                  <span>Retake Assessment</span>
                 </button>
                 <button class="action-btn" routerLink="/news">
                   <span class="action-icon">📰</span>
@@ -230,5 +230,15 @@ export class DashboardComponent implements OnInit {
   getUserName(): string {
     const user = this.googleAuth.getCurrentUser();
     return user?.name || user?.email?.split('@')[0] || 'User';
+  }
+  
+  retakeAssessment() {
+    // Clear assessment data to allow retaking
+    localStorage.removeItem('assessment_completed');
+    localStorage.removeItem('assessment_data');
+    localStorage.removeItem('roadmap_data');
+    
+    // Navigate to assessment
+    this.router.navigate(['/assessment']);
   }
 }
