@@ -48,7 +48,22 @@ export class GoogleAuthService {
       const user = result.user;
       
       if (user) {
-        await this.createOrUpdateUser(user);
+        // Only handle Firebase auth, data will go to Supabase
+        const userData = {
+          uid: user.uid,
+          name: user.displayName || 'User',
+          email: user.email,
+          phone: user.phoneNumber,
+          authMethod: 'google',
+          photoURL: user.photoURL,
+          isGuest: false
+        };
+        
+        // Store in localStorage for immediate use
+        localStorage.setItem('current_user', JSON.stringify(userData));
+        this.currentUserSubject.next(userData);
+        this.isLoggedInSubject.next(true);
+        
         return true;
       }
       return false;
