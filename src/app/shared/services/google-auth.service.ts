@@ -110,17 +110,25 @@ export class GoogleAuthService {
   }
 
   private async createOrUpdateUser(firebaseUser: any): Promise<void> {
-    await this.loadOrCreateUserData(firebaseUser);
+    // Firebase is now auth-only, no user data storage
+    const userData = {
+      uid: firebaseUser.uid,
+      name: firebaseUser.displayName || 'User',
+      email: firebaseUser.email,
+      phone: firebaseUser.phoneNumber,
+      authMethod: 'google',
+      photoURL: firebaseUser.photoURL,
+      isGuest: false
+    };
+    
+    localStorage.setItem('current_user', JSON.stringify(userData));
+    this.currentUserSubject.next(userData);
+    this.isLoggedInSubject.next(true);
   }
 
   private async loadUserData(firebaseUser: any): Promise<void> {
-    const userRef = ref(this.db, `users/${firebaseUser.uid}`);
-    const snapshot = await get(userRef);
-    
-    if (snapshot.exists()) {
-      this.currentUserSubject.next(snapshot.val());
-      this.isLoggedInSubject.next(true);
-    }
+    // Firebase auth only - no user data loading from Firebase
+    await this.createOrUpdateUser(firebaseUser);
   }
   
   // Check for locally stored user on init
@@ -133,40 +141,8 @@ export class GoogleAuthService {
     }
   }
 
-  async updateUserProgress(progressData: any): Promise<void> {
-    const user = this.currentUserSubject.value;
-    if (user && user.uid) {
-      const userRef = ref(this.db, `users/${user.uid}`);
-      await update(userRef, progressData);
-      
-      const updatedUser = { ...user, ...progressData };
-      this.currentUserSubject.next(updatedUser);
-    }
-  }
-
-  async saveRoadmap(roadmapData: any): Promise<void> {
-    const user = this.currentUserSubject.value;
-    if (user && user.uid) {
-      const roadmapRef = ref(this.db, `users/${user.uid}/roadmaps/${Date.now()}`);
-      await set(roadmapRef, { ...roadmapData, createdAt: new Date().toISOString() });
-    }
-  }
-
-  async saveAssessment(assessmentData: any): Promise<void> {
-    const user = this.currentUserSubject.value;
-    if (user && user.uid) {
-      const assessmentRef = ref(this.db, `users/${user.uid}/assessments/${Date.now()}`);
-      await set(assessmentRef, { ...assessmentData, completedAt: new Date().toISOString() });
-    }
-  }
-
-  async saveInterviewSession(sessionData: any): Promise<void> {
-    const user = this.currentUserSubject.value;
-    if (user && user.uid) {
-      const interviewRef = ref(this.db, `users/${user.uid}/interviews/${Date.now()}`);
-      await set(interviewRef, { ...sessionData, completedAt: new Date().toISOString() });
-    }
-  }
+  // All data operations moved to Supabase
+  // Firebase is now authentication-only
 
   async signUpWithEmail(email: string, password: string, name: string): Promise<boolean> {
     try {
@@ -234,46 +210,8 @@ export class GoogleAuthService {
     }
   }
 
-  private async createUserProfile(firebaseUser: any, displayName?: string): Promise<void> {
-    const userRef = ref(this.db, `users/${firebaseUser.uid}`);
-    
-    const userData = {
-      uid: firebaseUser.uid,
-      email: firebaseUser.email,
-      name: displayName || firebaseUser.displayName || 'User',
-      photoURL: firebaseUser.photoURL || null,
-      phone: firebaseUser.phoneNumber || null,
-      level: 1,
-      xp: 0,
-      streak: 0,
-      totalPoints: 0,
-      achievements: [],
-      roadmaps: [],
-      assessments: [],
-      interviews: [],
-      preferences: {},
-      createdAt: new Date().toISOString(),
-      lastLogin: new Date().toISOString()
-    };
-    
-    await set(userRef, userData);
-    this.currentUserSubject.next(userData);
-    this.isLoggedInSubject.next(true);
-  }
-
-  private async loadOrCreateUserData(firebaseUser: any): Promise<void> {
-    const userRef = ref(this.db, `users/${firebaseUser.uid}`);
-    const snapshot = await get(userRef);
-    
-    if (!snapshot.exists()) {
-      await this.createUserProfile(firebaseUser);
-    } else {
-      const userData = snapshot.val();
-      await update(userRef, { lastLogin: new Date().toISOString() });
-      this.currentUserSubject.next(userData);
-      this.isLoggedInSubject.next(true);
-    }
-  }
+  // Firebase user profile creation removed
+  // All user data now handled by Supabase
 
   getCurrentUser(): any {
     return this.currentUserSubject.value;
