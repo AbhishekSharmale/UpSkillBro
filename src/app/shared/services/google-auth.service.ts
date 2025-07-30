@@ -151,7 +151,19 @@ export class GoogleAuthService {
       
       if (user) {
         // Create user profile with provided name
-        await this.createUserProfile(user, name);
+        const userData = {
+          uid: user.uid,
+          name: name,
+          email: user.email,
+          phone: user.phoneNumber,
+          authMethod: 'email',
+          photoURL: user.photoURL,
+          isGuest: false
+        };
+        
+        localStorage.setItem('current_user', JSON.stringify(userData));
+        this.currentUserSubject.next(userData);
+        this.isLoggedInSubject.next(true);
         return true;
       }
       return false;
@@ -167,7 +179,19 @@ export class GoogleAuthService {
       const user = result.user;
       
       if (user) {
-        await this.loadOrCreateUserData(user);
+        const userData = {
+          uid: user.uid,
+          name: user.displayName || 'User',
+          email: user.email,
+          phone: user.phoneNumber,
+          authMethod: 'email',
+          photoURL: user.photoURL,
+          isGuest: false
+        };
+        
+        localStorage.setItem('current_user', JSON.stringify(userData));
+        this.currentUserSubject.next(userData);
+        this.isLoggedInSubject.next(true);
         return true;
       }
       return false;
@@ -200,7 +224,19 @@ export class GoogleAuthService {
       const user = result.user;
       
       if (user) {
-        await this.loadOrCreateUserData(user);
+        const userData = {
+          uid: user.uid,
+          name: user.displayName || 'User',
+          email: user.email,
+          phone: user.phoneNumber,
+          authMethod: 'phone',
+          photoURL: user.photoURL,
+          isGuest: false
+        };
+        
+        localStorage.setItem('current_user', JSON.stringify(userData));
+        this.currentUserSubject.next(userData);
+        this.isLoggedInSubject.next(true);
         return true;
       }
       return false;
