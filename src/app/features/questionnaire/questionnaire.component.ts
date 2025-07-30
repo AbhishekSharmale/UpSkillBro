@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { QuestionnaireService } from '../../shared/services/questionnaire.service';
 import { DynamicQuestionService } from '../../shared/services/dynamic-question.service';
+import { SupabaseService } from '../../shared/services/supabase.service';
 import { Question, QuestionnaireResponse } from '../../shared/models/questionnaire.models';
 
 @Component({
@@ -141,6 +142,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private questionnaireService: QuestionnaireService,
     private dynamicQuestionService: DynamicQuestionService,
+    private supabase: SupabaseService,
     private router: Router
   ) {
     this.questionForm = this.fb.group({
@@ -148,15 +150,21 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
-    // Check if assessment is already completed (but allow guests to retake)
+  async ngOnInit() {
     const currentUser = JSON.parse(localStorage.getItem('current_user') || '{}');
-    const assessmentCompleted = localStorage.getItem('assessment_completed');
     
-    if (assessmentCompleted === 'true' && !currentUser.isGuest) {
-      // Redirect registered users to dashboard if already completed
-      this.router.navigate(['/dashboard']);
-      return;
+    // Check Supabase for existing assessment (non-guests only)
+    if (!currentUser.isGuest && currentUser.uid) {
+      try {
+        const existingAssessment = await this.supabase.getLatestAssessment(currentUser.uid);
+        if (existingAssessment && existingAssessment.completed) {
+          // Redirect to dashboard if already completed
+          this.router.navigate(['/dashboard']);
+          return;
+        }
+      } catch (error) {
+        console.log('No existing assessment found, starting fresh');
+      }
     }
     
     // Clear previous guest data if starting fresh
@@ -273,13 +281,34 @@ export class QuestionnaireComponent implements OnInit, OnDestroy {
       // Complete questionnaire and generate roadmap data
       await this.questionnaireService.completeQuestionnaire().toPromise();
       
-      // Generate roadmap data for visual component
+      const currentUser = JSON.parse(localStorage.getItem('current_user') || '{}');
       const roadmapData = this.generateRoadmapData();
+      
+      // Save to Supabase if not guest
+      if (!currentUser.isGuest && currentUser.uid) {
+        try {
+          // Save assessment to Supabase
+          await this.supabase.saveAssessment(currentUser.uid, {
+            responses: this.currentResponse?.responses || {},
+            currentStep: this.currentStep,
+            totalSteps: this.totalSteps,
+            completed: true
+          });
+          
+          // Save roadmap to Supabase
+          await this.supabase.saveRoadmap(currentUser.uid, roadmapData);
+          
+          console.log('Assessment and roadmap saved to Supabase');
+        } catch (error) {
+          console.error('Error saving to Supabase:', error);
+        }
+      }
+      
+      // Also save locally for immediate use
       localStorage.setItem('roadmap_data', JSON.stringify(roadmapData));
       localStorage.setItem('assessment_completed', 'true');
       
       // Check if user is guest
-      const currentUser = JSON.parse(localStorage.getItem('current_user') || '{}');
       if (currentUser.isGuest) {
         // For guests, show a prompt to sign up after seeing roadmap
         localStorage.setItem('show_signup_prompt', 'true');
