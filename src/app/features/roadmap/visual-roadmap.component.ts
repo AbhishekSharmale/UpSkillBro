@@ -209,7 +209,221 @@ export class VisualRoadmapComponent implements OnInit {
   }
 
   startMilestone(milestone: Milestone) {
-    alert(`Starting milestone: ${milestone.title}\\n\\nThis will redirect to learning resources and track your progress.`);
+    const resources = this.getResourceLinks(milestone);
+    
+    // Create modal with resource links
+    const modal = document.createElement('div');
+    modal.className = 'resource-modal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>📚 ${milestone.title} - Learning Resources</h3>
+          <button class="close-btn" onclick="this.parentElement.parentElement.parentElement.remove()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Start your learning journey with these curated resources:</p>
+          <div class="resource-links">
+            ${resources.map(resource => `
+              <div class="resource-item">
+                <h4>${resource.category}</h4>
+                ${resource.links.map(link => `
+                  <a href="${link.url}" target="_blank" class="resource-link">
+                    <span class="link-icon">${link.icon}</span>
+                    <span class="link-text">${link.title}</span>
+                    <span class="link-type">${link.type}</span>
+                  </a>
+                `).join('')}
+              </div>
+            `).join('')}
+          </div>
+          <div class="modal-actions">
+            <button class="btn-primary" onclick="this.parentElement.parentElement.parentElement.remove()">Start Learning 🚀</button>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    // Add modal styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .resource-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      .modal-content {
+        background: white;
+        border-radius: 12px;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      }
+      .modal-header {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .close-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #666;
+      }
+      .modal-body {
+        padding: 20px;
+      }
+      .resource-item {
+        margin-bottom: 20px;
+      }
+      .resource-item h4 {
+        color: #0038FF;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      .resource-link {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        margin-bottom: 8px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        transition: all 0.2s;
+      }
+      .resource-link:hover {
+        background: #e9ecef;
+        transform: translateY(-1px);
+      }
+      .link-icon {
+        margin-right: 12px;
+        font-size: 18px;
+      }
+      .link-text {
+        flex: 1;
+        font-weight: 500;
+      }
+      .link-type {
+        background: #0038FF;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+      .modal-actions {
+        text-align: center;
+        margin-top: 20px;
+      }
+    `;
+    
+    document.head.appendChild(style);
+    document.body.appendChild(modal);
+  }
+  
+  getResourceLinks(milestone: Milestone): any[] {
+    const resourceMap: { [key: string]: any[] } = {
+      'Foundation Building': [
+        {
+          category: '📖 Documentation & Guides',
+          links: [
+            { title: 'MDN Web Docs - JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', icon: '📚', type: 'Docs' },
+            { title: 'React Official Documentation', url: 'https://react.dev/', icon: '⚛️', type: 'Docs' },
+            { title: 'Node.js Official Guide', url: 'https://nodejs.org/en/docs/', icon: '🟢', type: 'Docs' }
+          ]
+        },
+        {
+          category: '🎥 Video Courses',
+          links: [
+            { title: 'JavaScript Fundamentals - freeCodeCamp', url: 'https://www.youtube.com/watch?v=PkZNo7MFNFg', icon: '📺', type: 'Free' },
+            { title: 'React Tutorial - Traversy Media', url: 'https://www.youtube.com/watch?v=w7ejDZ8SWv8', icon: '📺', type: 'Free' },
+            { title: 'Node.js Crash Course', url: 'https://www.youtube.com/watch?v=fBNz5xF-Kx4', icon: '📺', type: 'Free' }
+          ]
+        },
+        {
+          category: '💻 Practice Platforms',
+          links: [
+            { title: 'freeCodeCamp', url: 'https://www.freecodecamp.org/', icon: '🔥', type: 'Free' },
+            { title: 'Codecademy', url: 'https://www.codecademy.com/', icon: '🎓', type: 'Freemium' },
+            { title: 'JavaScript30', url: 'https://javascript30.com/', icon: '⚡', type: 'Free' }
+          ]
+        }
+      ],
+      'Skill Enhancement': [
+        {
+          category: '📖 Advanced Documentation',
+          links: [
+            { title: 'TypeScript Handbook', url: 'https://www.typescriptlang.org/docs/', icon: '🔷', type: 'Docs' },
+            { title: 'React Testing Library', url: 'https://testing-library.com/docs/react-testing-library/intro/', icon: '🧪', type: 'Docs' },
+            { title: 'Express.js Guide', url: 'https://expressjs.com/en/guide/routing.html', icon: '🚀', type: 'Docs' }
+          ]
+        },
+        {
+          category: '🎥 Advanced Courses',
+          links: [
+            { title: 'Advanced React Patterns', url: 'https://www.youtube.com/watch?v=6YbBfPFzuuI', icon: '📺', type: 'Free' },
+            { title: 'TypeScript Course - Net Ninja', url: 'https://www.youtube.com/playlist?list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwDPUI', icon: '📺', type: 'Free' },
+            { title: 'Database Design Course', url: 'https://www.youtube.com/watch?v=ztHopE5Wnpc', icon: '📺', type: 'Free' }
+          ]
+        },
+        {
+          category: '🛠️ Tools & Platforms',
+          links: [
+            { title: 'GitHub Learning Lab', url: 'https://lab.github.com/', icon: '🐙', type: 'Free' },
+            { title: 'Postman Learning Center', url: 'https://learning.postman.com/', icon: '📮', type: 'Free' },
+            { title: 'Docker Getting Started', url: 'https://docs.docker.com/get-started/', icon: '🐳', type: 'Free' }
+          ]
+        }
+      ],
+      'Career Advancement': [
+        {
+          category: '🏗️ System Design',
+          links: [
+            { title: 'System Design Primer', url: 'https://github.com/donnemartin/system-design-primer', icon: '🏗️', type: 'Free' },
+            { title: 'High Scalability', url: 'http://highscalability.com/', icon: '📈', type: 'Free' },
+            { title: 'AWS Architecture Center', url: 'https://aws.amazon.com/architecture/', icon: '☁️', type: 'Free' }
+          ]
+        },
+        {
+          category: '👥 Leadership & Soft Skills',
+          links: [
+            { title: 'Tech Lead Survival Guide', url: 'https://www.youtube.com/watch?v=kOpHykNIxF0', icon: '👨‍💼', type: 'Free' },
+            { title: 'Engineering Management', url: 'https://www.youtube.com/watch?v=iLS6NXMXtLI', icon: '📊', type: 'Free' },
+            { title: 'Code Review Best Practices', url: 'https://google.github.io/eng-practices/review/', icon: '🔍', type: 'Free' }
+          ]
+        },
+        {
+          category: '🎯 Certifications',
+          links: [
+            { title: 'AWS Certified Solutions Architect', url: 'https://aws.amazon.com/certification/certified-solutions-architect-associate/', icon: '🏆', type: 'Paid' },
+            { title: 'Google Cloud Professional', url: 'https://cloud.google.com/certification', icon: '🏆', type: 'Paid' },
+            { title: 'Kubernetes Certification', url: 'https://www.cncf.io/certification/cka/', icon: '🏆', type: 'Paid' }
+          ]
+        }
+      ]
+    };
+    
+    return resourceMap[milestone.title] || [
+      {
+        category: '📚 General Resources',
+        links: [
+          { title: 'MDN Web Docs', url: 'https://developer.mozilla.org/', icon: '📚', type: 'Free' },
+          { title: 'Stack Overflow', url: 'https://stackoverflow.com/', icon: '❓', type: 'Free' },
+          { title: 'GitHub', url: 'https://github.com/', icon: '🐙', type: 'Free' }
+        ]
+      }
+    ];
   }
 
   retakeAssessment() {
